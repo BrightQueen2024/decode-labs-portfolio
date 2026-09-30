@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Office of Ayuba Garba • Senior Software Engineer & Enterprise Systems Consultant</title>
-    <meta name="description" content="Bridging Enterprise Software Engineering, Applied AI & Systems Strategy. High-throughput distributed platforms, agentic workflows, and executive technology advisory.">
-    <meta name="keywords" content="Ayuba Garba, Enterprise Software Engineer, Applied AI Developer, Technology Consultant, Full-Stack Architecture, Node.js, Python, Turing Vetted, AWS Certified AI">
-    <link rel="canonical" href="https://karolinahess.com/">
+    <title>Ayuba Garba • Lead Software Engineer | Distributed Systems & Quantitative Engines</title>
+    <meta name="description" content="Lead Software Engineer specializing in scalable distributed backends (Go, Rust), algorithmic execution engines, and Web3/fintech systems. Architecting resilient systems with microscopic latency.">
+    <meta name="keywords" content="Ayuba Garba, Lead Software Engineer, Distributed Systems, Go, Golang, Rust, Algorithmic Execution, MQL5, Quantitative Trading, zk-SNARKs, Web3, PostgreSQL, Redis, Turing Vetted, AWS AI">
+    <link rel="canonical" href="https://ayuba-garba-portfolio.netlify.app/">
     
     <!-- Open Graph / Meta -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Office of Ayuba Garba • Senior Software Engineer & Systems Consultant">
-    <meta property="og:description" content="Architecting high-throughput full-stack platforms, deploying intelligent automation workflows, and aligning digital operations for scale.">
+    <meta property="og:title" content="Ayuba Garba • Lead Software Engineer | Distributed Systems & Quantitative Engines">
+    <meta property="og:description" content="Architecting resilient systems with microscopic latency. Go API gateways, Rust ledgers, zero-knowledge verification frameworks, and algorithmic execution engines.">
     <meta property="og:image" content="images/nexaverse.jpg">
+    <meta property="og:url" content="https://ayuba-garba-portfolio.netlify.app/">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Office of Ayuba Garba • Senior Software Engineer & Systems Consultant">
-    <meta name="twitter:description" content="Architecting high-throughput full-stack platforms, deploying intelligent automation workflows, and aligning digital operations for scale.">
+    <meta name="twitter:title" content="Ayuba Garba • Lead Software Engineer">
+    <meta name="twitter:description" content="Architecting resilient systems with microscopic latency. Distributed backends (Go, Rust) and quantitative execution engines.">
     <meta name="twitter:image" content="images/nexaverse.jpg">
 
     <!-- Favicon -->
@@ -24,20 +25,23 @@
     <!-- Google Fonts & Tailwind CDN -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#050505',
-                        'obsidian-card': '#0B0F17',
-                        'surface-subtle': '#111622',
-                        'muted-border': 'rgba(255, 255, 255, 0.08)',
-                        'hover-border': 'rgba(255, 255, 255, 0.22)',
-                        'accent-soft': '#E5E7EB',
-                        'muted-gray': '#9CA3AF'
+                        canvas: '#0a0b0e',
+                        elevation: '#12141a',
+                        'glass-surface': 'rgba(22, 25, 34, 0.72)',
+                        'gold-primary': '#d4af37',
+                        'gold-light': '#fff1a8',
+                        'gold-pale': '#fef08a',
+                        'gold-dark': '#996515',
+                        'slate-body': '#94a3b8',
+                        'slate-muted': '#64748b',
+                        'white-pure': '#f8fafc'
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
@@ -49,45 +53,49 @@
     </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#050505] text-[#E5E7EB] antialiased selection:bg-white selection:text-black min-h-screen relative font-sans">
+<body class="bg-[#0a0b0e] text-[#94a3b8] antialiased selection:bg-[#d4af37] selection:text-[#0a0b0e] min-h-screen relative font-sans architectural-grid">
 
     <!-- Atmospheric Film Grain Overlay -->
     <div class="noise-overlay"></div>
 
-    <!-- 1. FLOATING STICKY NAVBAR -->
+    <!-- 2. Interactive Ambient Gold Cursor Glow -->
+    <div id="ambient-spotlight" class="ambient-spotlight"></div>
+
+    <!-- 1. FLOATING ULTRA-THIN FROSTED GLASS HEADER -->
     <header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-6 pointer-events-none">
-        <nav id="floating-navbar" class="pointer-events-auto max-w-4xl mx-auto glass-nav px-5 py-3 rounded-full flex items-center justify-between transition-all duration-300">
-            <!-- Left: Monogram / Name -->
-            <a href="#hero" class="flex items-center space-x-3 group">
-                <div class="w-8 h-8 rounded-full border border-white/20 overflow-hidden bg-neutral-900 flex items-center justify-center transition-transform group-hover:scale-105">
-                    <img src="profile.jpg.jpeg" alt="Ayuba Garba" class="w-full h-full object-cover filter contrast-125">
+        <nav id="floating-navbar" class="pointer-events-auto max-w-5xl mx-auto glass-nav px-5 py-3 rounded-full flex items-center justify-between transition-all duration-300">
+            <!-- Left: Monogram AG & Identity -->
+            <a href="#hero" class="flex items-center space-x-3 group" aria-label="Ayuba Garba Portfolio Top">
+                <div class="w-9 h-9 rounded-full monogram-ag overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
+                    <span class="text-xs font-mono font-bold text-gold-metallic tracking-wider">AG</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xs font-bold tracking-tight text-white group-hover:text-neutral-300 transition-colors uppercase">
+                    <span class="text-xs font-bold tracking-tight text-[#f8fafc] group-hover:text-gold-light transition-colors uppercase">
                         AYUBA GARBA
                     </span>
-                    <span class="text-[9px] font-mono tracking-widest text-neutral-400 uppercase -mt-0.5">
-                        ADVISORY
+                    <span class="text-[9px] font-mono tracking-widest text-[#d4af37] uppercase -mt-0.5">
+                        LEAD SYSTEMS ARCHITECT
                     </span>
                 </div>
             </a>
 
             <!-- Center: Navigation Links -->
-            <ul class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-wide">
-                <li><a href="#expertise" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Expertise</a></li>
-                <li><a href="#case-studies" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Case Studies</a></li>
+            <ul class="hidden md:flex items-center space-x-7 text-xs font-medium tracking-wide">
+                <li><a href="#systems" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Systems</a></li>
+                <li><a href="#architecture" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Architecture</a></li>
+                <li><a href="#skills" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Skills</a></li>
                 <li><a href="#credentials" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Credentials</a></li>
-                <li><a href="#booking" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Advisory</a></li>
+                <li><a href="#advisory" class="nav-link-item text-neutral-400 hover:text-white transition-colors pb-1">Advisory</a></li>
             </ul>
 
-            <!-- Right: Pure White Pill Button & Mobile Hamburger -->
+            <!-- Right: Metallic Gold Pill Button & Mobile Hamburger -->
             <div class="flex items-center space-x-3">
-                <a href="#booking" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-full bg-white text-black hover:bg-neutral-200 transition-all hover:scale-[1.02] shadow-[0_0_15px_rgba(255,255,255,0.15)]">
-                    Book Consultation
+                <a href="#advisory" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-full btn-gold-primary">
+                    Initiate Contact
                 </a>
                 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" aria-label="Toggle navigation menu" class="md:hidden p-1.5 rounded-full text-neutral-400 hover:text-white border border-white/10 hover:border-white/25 transition-colors">
+                <button id="mobile-menu-btn" aria-label="Toggle navigation menu" class="md:hidden p-1.5 rounded-full text-neutral-400 hover:text-white border border-[#d4af37]/30 hover:border-[#d4af37] transition-colors">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
@@ -96,22 +104,23 @@
         </nav>
 
         <!-- Mobile Drawer Overlay -->
-        <div id="mobile-menu-overlay" class="hidden fixed inset-0 top-20 bg-black/95 backdrop-blur-2xl px-6 py-10 flex flex-col justify-between md:hidden pointer-events-auto z-40 border-t border-white/10 transition-all">
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 top-20 bg-[#0a0b0e]/95 backdrop-blur-2xl px-6 py-10 flex flex-col justify-between md:hidden pointer-events-auto z-40 border-t border-[#d4af37]/20 transition-all">
             <div class="flex flex-col space-y-6 pt-4">
                 <span class="text-[10px] font-mono tracking-widest uppercase text-neutral-500">Navigation Index</span>
-                <a href="#expertise" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-neutral-400 transition-colors">01. Expertise & Pillars</a>
-                <a href="#case-studies" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-neutral-400 transition-colors">02. Selected Works & Systems</a>
-                <a href="#credentials" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-neutral-400 transition-colors">03. Vetted Credentials</a>
-                <a href="#booking" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-neutral-400 transition-colors">04. Executive Advisory</a>
+                <a href="#systems" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-gold-light transition-colors">01. Featured Systems</a>
+                <a href="#architecture" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-gold-light transition-colors">02. Architecture & Design</a>
+                <a href="#skills" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-gold-light transition-colors">03. Technical Matrix</a>
+                <a href="#credentials" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-gold-light transition-colors">04. Vetted Credentials</a>
+                <a href="#advisory" class="mobile-nav-link text-2xl font-bold tracking-tight text-white hover:text-gold-light transition-colors">05. Executive Advisory</a>
             </div>
 
             <div class="pt-8 border-t border-white/10 flex flex-col space-y-4">
                 <div class="flex items-center space-x-2 text-xs font-mono text-neutral-400">
-                    <span class="status-pulse-dot"></span>
-                    <span>AVAILABLE FOR ENTERPRISE ADVISORY</span>
+                    <span class="status-pulse-emerald"></span>
+                    <span class="text-neutral-300">AVAILABLE FOR SCALABLE ARCHITECTURE ROLES</span>
                 </div>
-                <a href="#booking" class="mobile-nav-link w-full py-3.5 text-center text-sm font-bold rounded-full bg-white text-black hover:bg-neutral-200 transition-all">
-                    Book Consultation ($25/hr)
+                <a href="#advisory" class="mobile-nav-link w-full py-3.5 text-center text-xs font-bold rounded-full btn-gold-primary">
+                    Initiate Contact / Schedule Brief
                 </a>
             </div>
         </div>
@@ -119,60 +128,60 @@
 
     <main class="relative z-10 pt-28 sm:pt-36">
 
-        <!-- 2. EDITORIAL HERO SECTION -->
-        <section id="hero" class="max-w-6xl mx-auto px-6 sm:px-8 pt-12 pb-24 lg:pt-16 lg:pb-32 flex flex-col items-center text-center">
+        <!-- 2. HERO SECTION -->
+        <section id="hero" class="max-w-6xl mx-auto px-6 sm:px-8 pt-10 pb-20 lg:pt-16 lg:pb-28 flex flex-col items-center text-center">
             
-            <!-- Live Availability Badge -->
-            <div class="inline-flex items-center space-x-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md mb-8 hover:border-white/20 transition-all">
-                <span class="status-pulse-dot"></span>
-                <span class="text-[10px] sm:text-xs font-mono tracking-widest text-neutral-300 uppercase">
-                    AVAILABLE FOR ENTERPRISE ADVISORY & ARCHITECTURE
+            <!-- Status Pill: Available for Scalable Architecture Roles -->
+            <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-[#d4af37]/30 bg-[#12141a]/80 backdrop-blur-md mb-8 hover:border-[#d4af37]/60 shadow-[0_0_20px_rgba(212,175,55,0.08)] transition-all">
+                <span class="status-pulse-emerald"></span>
+                <span class="text-[11px] sm:text-xs font-mono tracking-wider text-neutral-200 uppercase">
+                    Available for Scalable Architecture Roles
                 </span>
             </div>
 
-            <!-- Massive Editorial Headline -->
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-[-0.04em] leading-[1.08] max-w-5xl mb-8">
-                Bridging Enterprise Software Engineering, Applied AI & Systems Strategy.
+            <!-- Headline: Architecting resilient systems with microscopic latency. -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#f8fafc] tracking-[-0.035em] leading-[1.08] max-w-5xl mb-8">
+                Architecting resilient systems with <span class="text-gold-metallic">microscopic latency.</span>
             </h1>
 
-            <!-- Crisp Sub-Headline -->
-            <p class="text-base sm:text-lg lg:text-xl text-neutral-400 font-light max-w-3xl leading-relaxed mb-12">
-                I partner with founders, executives, and enterprise teams to architect high-throughput full-stack platforms, deploy intelligent automation workflows, and align digital operations for scale.
+            <!-- Engineering Bio -->
+            <p class="text-base sm:text-lg lg:text-xl text-[#94a3b8] font-light max-w-3xl leading-relaxed mb-10">
+                Lead Software Engineer specializing in scalable distributed backends (<span class="text-white font-medium">Go</span>, <span class="text-white font-medium">Rust</span>), algorithmic execution engines (<span class="text-white font-medium">MQL5/C++</span>), and Web3 fintech platforms. Engineering high-concurrency API gateways, double-entry ACID ledgers, zero-knowledge verification frameworks, and distributed fault-tolerant topologies.
             </p>
 
-            <!-- Dual CTA Buttons -->
+            <!-- Direct CTAs: Explore Systems & GitHub Profile -->
             <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                <a href="#booking" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 text-sm font-semibold rounded-full bg-white text-black hover:bg-neutral-200 transition-all hover:scale-[1.02] shadow-[0_0_25px_rgba(255,255,255,0.2)]">
-                    <span>Schedule 1-on-1 Consultation ($25/hr)</span>
+                <a href="#systems" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 text-sm font-bold rounded-full btn-gold-primary">
+                    <span>Explore Systems</span>
                     <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                     </svg>
                 </a>
-                <a href="#case-studies" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 text-sm font-medium rounded-full bg-white/[0.04] text-white border border-white/15 hover:bg-white/[0.08] hover:border-white/30 transition-all">
-                    <span>Explore Production Systems</span>
-                    <svg class="w-4 h-4 ml-1 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                <a href="https://github.com/BrightQueen2024" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-8 py-4 text-sm font-medium rounded-full btn-gold-secondary">
+                    <span>GitHub Profile</span>
+                    <svg class="w-4 h-4 ml-1 text-gold-pale" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path>
                     </svg>
                 </a>
             </div>
 
             <!-- Architectural Telemetry Ribbon / High-Value Metric Badges -->
-            <div class="w-full max-w-4xl mt-20 pt-10 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+            <div class="w-full max-w-4xl mt-16 pt-8 border-t border-white/[0.08] grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
                 <div class="flex flex-col space-y-1">
-                    <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">99.98%</span>
-                    <span class="text-xs text-neutral-400 font-mono tracking-wider uppercase">Production SLA Target</span>
+                    <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">&lt;1.2ms</span>
+                    <span class="text-xs text-[#94a3b8] font-mono tracking-wider uppercase">Go Gateway Latency</span>
                 </div>
                 <div class="flex flex-col space-y-1">
-                    <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">&lt;80ms</span>
-                    <span class="text-xs text-neutral-400 font-mono tracking-wider uppercase">API Core Latency</span>
+                    <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">100% ACID</span>
+                    <span class="text-xs text-[#94a3b8] font-mono tracking-wider uppercase">Rust Double-Entry Ledger</span>
                 </div>
                 <div class="flex flex-col space-y-1">
                     <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">Top 1%</span>
-                    <span class="text-xs text-neutral-400 font-mono tracking-wider uppercase">Turing Vetted Engineer</span>
+                    <span class="text-xs text-[#94a3b8] font-mono tracking-wider uppercase">Turing Vetted Engineer</span>
                 </div>
                 <div class="flex flex-col space-y-1">
                     <span class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-white">AWS AI</span>
-                    <span class="text-xs text-neutral-400 font-mono tracking-wider uppercase">Certified Practitioner '26</span>
+                    <span class="text-xs text-[#94a3b8] font-mono tracking-wider uppercase">Certified Cloud AI '26</span>
                 </div>
             </div>
         </section>
@@ -182,175 +191,212 @@
             <div class="hairline-divider"></div>
         </div>
 
-        <!-- 3. PRACTICE PILLARS (BENTO GRID / EDITORIAL CARDS) -->
-        <section id="expertise" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
+        <!-- 3. FEATURED SYSTEMS GRID (3D CARDS WITH PERSPECTIVE TILT) -->
+        <section id="systems" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
             <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-neutral-500 uppercase mb-3">
+                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#d4af37] uppercase mb-3">
                         <span>[01]</span>
                         <span>/</span>
-                        <span>PRACTICE PILLARS</span>
+                        <span>PRODUCTION SYSTEMS</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                        Engineered for Resilient Enterprise Scale
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f8fafc] tracking-tight leading-tight">
+                        Featured Systems & Architecture
                     </h2>
                 </div>
-                <p class="text-sm sm:text-base text-neutral-400 max-w-md font-light leading-relaxed">
-                    Replacing fragmented tooling with unified architectures, autonomous intelligence, and institutional governance.
+                <p class="text-sm sm:text-base text-[#94a3b8] max-w-md font-light leading-relaxed">
+                    Production distributed backends, quantitative execution engines, and zero-knowledge gated platforms engineered for institutional throughput.
                 </p>
             </div>
 
-            <!-- Bento Grid: 3 High-Tier Modules -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                
-                <!-- Pillar Card 1: Enterprise Full-Stack Architecture -->
-                <div class="glass-panel p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[01.A]</span>
-                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-neutral-300">
-                                CORE ARCHITECTURE
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white mb-6 group-hover:border-white/30 transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight mb-4">
-                            Enterprise Full-Stack Architecture
-                        </h3>
-                        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-light">
-                            Architecting resilient platforms capable of sustained multi-tenant throughput, low latency, and zero-downtime scalability.
-                        </p>
-                        
-                        <div class="space-y-3.5 mb-8">
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">High-throughput backend APIs (Node.js/Express, Python async pipelines)</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Modern reactive web clients (React, component state isolation)</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Relational & document databases (PostgreSQL ACID, MongoDB distributed scale)</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Cloud deployment infrastructure (Containerization, caching layers & CI/CD)</span>
-                            </div>
-                        </div>
-                    </div>
+            <!-- 3D Cards Grid -->
+            <div class="space-y-16 card-3d-wrap">
 
-                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Node.js</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Express</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">React</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">PostgreSQL</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">MongoDB</span>
-                    </div>
-                </div>
+                <!-- System 1: NeXaVerSe MVP -->
+                <article class="glass-panel card-3d rounded-3xl overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                        <!-- Left Details -->
+                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[SYSTEM 01]</span>
+                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                        DISTRIBUTED SUPER-APP & ZK
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                                    NeXaVerSe MVP
+                                </h3>
+                                <p class="text-sm text-[#94a3b8] leading-relaxed font-light mb-8">
+                                    High-throughput ecosystem integrating an asynchronous <span class="text-white font-medium">Go API Gateway</span>, double-entry ACID <span class="text-white font-medium">Rust ledger</span>, real-time WebSocket chat, and <span class="text-white font-medium">zk-SNARK biometric gating</span>.
+                                </p>
 
-                <!-- Pillar Card 2: Applied AI & Business Automation -->
-                <div class="glass-panel p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[01.B]</span>
-                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-neutral-300">
-                                INTELLIGENT SYSTEMS
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white mb-6 group-hover:border-white/30 transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight mb-4">
-                            Applied AI & Business Automation
-                        </h3>
-                        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-light">
-                            Deploying frontier LLMs, context pipelines, and autonomous agent loops directly into critical corporate decision workflows.
-                        </p>
-                        
-                        <div class="space-y-3.5 mb-8">
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">LLM integration pipelines (Contextual retrieval, RAG, tool calling)</span>
+                                <div class="space-y-3 mb-8">
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Asynchronous Go API Gateway with non-blocking worker pools</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Double-entry ACID Rust ledger ensuring financial balance invariance</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Real-time low-latency WebSocket chat & distributed presence</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>zk-SNARK biometric verification gating for zero-knowledge auth</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Agentic workflows & multi-step deterministic reasoning agents</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Autonomous data pipelines (Stream ingestion, vector embeddings & ETL)</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Internal business process automation (System sync & audit telemetry)</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">LLM Pipelines</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Agentic Loops</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">RAG & Vectors</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">ETL Telemetry</span>
-                    </div>
-                </div>
+                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-[10px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/25">Go (Golang)</span>
+                                    <span class="text-[10px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/25">Rust Ledger</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">zk-SNARKs</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">WebSockets</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">Redis</span>
+                                </div>
+                                <a href="#advisory" class="text-xs font-semibold text-white hover:text-gold-light flex items-center space-x-1 transition-colors">
+                                    <span>Audit Specs</span>
+                                    <span class="text-xs">→</span>
+                                </a>
+                            </div>
+                        </div>
 
-                <!-- Pillar Card 3: Strategic Technology & Management Consulting -->
-                <div class="glass-panel p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-8">
-                            <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[01.C]</span>
-                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-white/[0.05] border border-white/10 text-neutral-300">
-                                STRATEGIC ADVISORY
-                            </span>
-                        </div>
-                        <div class="w-12 h-12 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center text-white mb-6 group-hover:border-white/30 transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight mb-4">
-                            Strategic Technology Consulting
-                        </h3>
-                        <p class="text-sm text-neutral-400 leading-relaxed mb-6 font-light">
-                            Authoritative technical due diligence, architectural roadmapping, and fractional engineering leadership for modern enterprises.
-                        </p>
-                        
-                        <div class="space-y-3.5 mb-8">
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Architecture due diligence & comprehensive codebase audits</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Infrastructure cost-optimization (Cloud FinOps rationalization)</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Technical roadmapping & system scalability risk assessment</span>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <span class="text-white text-xs mt-1">✦</span>
-                                <span class="text-xs sm:text-sm text-neutral-300">Fractional engineering leadership & developer governance</span>
-                            </div>
+                        <!-- Right Screenshot / Visual -->
+                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
+                            <img src="images/nexaverse.jpg" alt="NeXaVerSe Super-App Ecosystem Architecture Dashboard" class="showcase-img w-full h-auto rounded-xl object-cover border border-[#d4af37]/20 shadow-2xl">
                         </div>
                     </div>
+                </article>
 
-                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Due Diligence</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Code Audits</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">FinOps</span>
-                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-black/40 border border-white/5">Roadmapping</span>
+                <!-- System 2: Automated FX Execution Engine -->
+                <article class="glass-panel card-3d rounded-3xl overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                        <!-- Left Details -->
+                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[SYSTEM 02]</span>
+                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                        QUANTITATIVE EXECUTION
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                                    Automated FX Execution Engine
+                                </h3>
+                                <p class="text-sm text-[#94a3b8] leading-relaxed font-light mb-8">
+                                    <span class="text-white font-medium">MQL5/C++</span> quantitative trading logic with 3-EMA structural pullbacks, stepped trailing stops, and multi-timeframe RSI momentum filters.
+                                </p>
+
+                                <div class="space-y-3 mb-8">
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Sub-millisecond tick streaming and automated order routing</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>3-EMA structural pullback detection with dynamic volatility sizing</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Stepped trailing stops with automated breakeven lock logic</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Multi-timeframe RSI momentum filters & circuit-breaker kill switch</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-[10px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/25">MQL5</span>
+                                    <span class="text-[10px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/25">C++ Engine</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">Quant Algo</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">3-EMA</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">TimescaleDB</span>
+                                </div>
+                                <a href="#advisory" class="text-xs font-semibold text-white hover:text-gold-light flex items-center space-x-1 transition-colors">
+                                    <span>Audit Specs</span>
+                                    <span class="text-xs">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Screenshot / Visual -->
+                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
+                            <img src="images/trading.jpg" alt="Automated Trading and Telemetry Engine Terminal Interface" class="showcase-img w-full h-auto rounded-xl object-cover border border-[#d4af37]/20 shadow-2xl">
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <!-- System 3: Awsoli Digital Infrastructure -->
+                <article class="glass-panel card-3d rounded-3xl overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+                        <!-- Left Details -->
+                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
+                            <div>
+                                <div class="flex items-center space-x-3 mb-4">
+                                    <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[SYSTEM 03]</span>
+                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                        ENTERPRISE EDGE
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                                    Awsoli Digital Infrastructure
+                                </h3>
+                                <p class="text-sm text-[#94a3b8] leading-relaxed font-light mb-8">
+                                    Institutional digital infrastructure engineered for corporate credibility, hardened security, and global audience scale with sub-second edge routing.
+                                </p>
+
+                                <div class="space-y-3 mb-8">
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Multi-region Cloudflare edge distribution architecture</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Enterprise identity deployment with secure role-based access</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Sub-second TTFB routing and automated dynamic SEO generation</span>
+                                    </div>
+                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-200">
+                                        <span class="text-gold-light">✦</span>
+                                        <span>Zero-downtime containerized CI/CD deployment pipelines</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="text-[10px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/25">TypeScript</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">Cloudflare Edge</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">PostgreSQL</span>
+                                    <span class="text-[10px] font-mono text-neutral-300 px-2.5 py-1 rounded bg-[#12141a] border border-white/10">Docker</span>
+                                </div>
+                                <a href="#advisory" class="text-xs font-semibold text-white hover:text-gold-light flex items-center space-x-1 transition-colors">
+                                    <span>Audit Specs</span>
+                                    <span class="text-xs">→</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Screenshot / Visual -->
+                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
+                            <img src="images/awsoli.jpg" alt="Awsoli Digital Infrastructure Platform Preview" class="showcase-img w-full h-auto rounded-xl object-cover border border-[#d4af37]/20 shadow-2xl">
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </section>
@@ -360,207 +406,177 @@
             <div class="hairline-divider"></div>
         </div>
 
-        <!-- 4. SELECTED WORKS & SYSTEMS ARCHITECTURE (SHOWCASE CARDS) -->
-        <section id="case-studies" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
+        <!-- 4. ARCHITECTURE & PRACTICE PILLARS -->
+        <section id="architecture" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
             <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-neutral-500 uppercase mb-3">
+                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#d4af37] uppercase mb-3">
                         <span>[02]</span>
                         <span>/</span>
-                        <span>SELECTED WORKS & SYSTEMS</span>
+                        <span>CORE ARCHITECTURE</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                        Production Case Studies
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f8fafc] tracking-tight leading-tight">
+                        Scalable Distributed Systems
                     </h2>
                 </div>
-                <p class="text-sm sm:text-base text-neutral-400 max-w-md font-light leading-relaxed">
-                    High-value production systems engineered for concurrency, real-time market data ingestion, and multi-tenant security.
+                <p class="text-sm sm:text-base text-[#94a3b8] max-w-md font-light leading-relaxed">
+                    Replacing fragmented infrastructure with deterministic concurrency, algorithmic execution speed, and cryptographic proof guarantees.
                 </p>
             </div>
 
-            <!-- Showcase Stack: 3 Large Architectural Cards -->
-            <div class="space-y-16">
-
-                <!-- Project 1: NexaVerse Super-App Ecosystem -->
-                <article class="glass-panel rounded-3xl overflow-hidden border border-white/10 group">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
-                        <!-- Left Details -->
-                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[CASE 01]</span>
-                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.06] text-neutral-300">
-                                        DISTRIBUTED SUPER-APP
-                                    </span>
-                                </div>
-                                <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                                    NexaVerse Super-App Ecosystem
-                                </h3>
-                                <p class="text-sm text-neutral-400 leading-relaxed font-light mb-8">
-                                    A multi-dimensional digital ecosystem engineered for unified user workflows, high concurrency, and distributed workspace partitioning.
-                                </p>
-
-                                <div class="space-y-3 mb-8">
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Modular multi-tenant architecture with tenant isolation</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Unified UX interface with cross-domain context switching</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Low-latency microservices with asynchronous message brokers</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Scalable distributed workflows supporting 1.2M+ active sessions</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Node.js</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Express</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">MongoDB</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Redis</span>
-                                </div>
-                                <a href="#booking" class="text-xs font-semibold text-white flex items-center space-x-1 group-hover:text-neutral-300 transition-colors">
-                                    <span>Audit Specs</span>
-                                    <span class="text-xs">→</span>
-                                </a>
-                            </div>
+            <!-- Bento Grid: 3 Pillars with 3D perspective -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 card-3d-wrap">
+                
+                <!-- Pillar 1: High-Throughput Distributed Backends -->
+                <div class="glass-panel card-3d p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[02.A]</span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                DISTRIBUTED GATEWAYS
+                            </span>
                         </div>
-
-                        <!-- Right Screenshot / Visual -->
-                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] bg-black/80 border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
-                            <img src="images/nexaverse.jpg" alt="NexaVerse Super-App Ecosystem Architecture Dashboard" class="showcase-img w-full h-auto rounded-xl object-cover border border-white/10 shadow-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light mb-6 group-hover:border-[#d4af37] transition-colors">
+                            <svg class="w-6 h-6 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                            High-Throughput Go Gateways
+                        </h3>
+                        <p class="text-sm text-[#94a3b8] leading-relaxed mb-6 font-light">
+                            Architecting resilient platforms capable of sustained multi-tenant throughput, low latency, and zero-downtime scalability using Go goroutine pooling.
+                        </p>
+                        
+                        <div class="space-y-3.5 mb-8">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Asynchronous Go API Gateways with sub-millisecond reverse proxying</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Non-blocking worker channels, goroutines & circuit breaker limits</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Redis cluster caching layers & connection pooling with PgBouncer</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Asynchronous message queues (Kafka, RabbitMQ) and event routing</span>
+                            </div>
                         </div>
                     </div>
-                </article>
 
-                <!-- Project 2: Awsoli Digital Infrastructure -->
-                <article class="glass-panel rounded-3xl overflow-hidden border border-white/10 group">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
-                        <!-- Left Details -->
-                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[CASE 02]</span>
-                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.06] text-neutral-300">
-                                        ENTERPRISE WEB PLATFORM
-                                    </span>
-                                </div>
-                                <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                                    Awsoli Digital Infrastructure
-                                </h3>
-                                <p class="text-sm text-neutral-400 leading-relaxed font-light mb-8">
-                                    An institutional web platform and digital identity infrastructure engineered for corporate credibility, security, and global audience scale.
-                                </p>
+                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
+                        <span class="text-[11px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/20">Go</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">Goroutines</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">Redis</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">PgBouncer</span>
+                    </div>
+                </div>
 
-                                <div class="space-y-3 mb-8">
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Institutional web platform supporting global corporate governance</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Enterprise identity deployment with secure role-based access models</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Sub-second TTFB routing and automated dynamic SEO generation</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>High-availability multi-region CDN distribution architecture</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">JavaScript</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">TypeScript</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">PostgreSQL</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Edge CDN</span>
-                                </div>
-                                <a href="#booking" class="text-xs font-semibold text-white flex items-center space-x-1 group-hover:text-neutral-300 transition-colors">
-                                    <span>Audit Specs</span>
-                                    <span class="text-xs">→</span>
-                                </a>
-                            </div>
+                <!-- Pillar 2: Algorithmic Execution & Quantitative Logic -->
+                <div class="glass-panel card-3d p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[02.B]</span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                QUANTITATIVE ENGINES
+                            </span>
                         </div>
-
-                        <!-- Right Screenshot / Visual -->
-                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] bg-black/80 border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
-                            <img src="images/awsoli.jpg" alt="Awsoli Digital Infrastructure Platform Preview" class="showcase-img w-full h-auto rounded-xl object-cover border border-white/10 shadow-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light mb-6 group-hover:border-[#d4af37] transition-colors">
+                            <svg class="w-6 h-6 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                            Algorithmic Execution (MQL5/C++)
+                        </h3>
+                        <p class="text-sm text-[#94a3b8] leading-relaxed mb-6 font-light">
+                            High-frequency execution logic with microsecond order routing, continuous tick telemetry streams, and automated mathematical risk bounds.
+                        </p>
+                        
+                        <div class="space-y-3.5 mb-8">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">3-EMA structural pullbacks with dynamic volatility sizing</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Stepped trailing stops with automated breakeven lock logic</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Multi-timeframe RSI momentum filters guarding against fakeouts</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Microsecond order routing and automated kill-switch circuit breaker</span>
+                            </div>
                         </div>
                     </div>
-                </article>
 
-                <!-- Project 3: Automated Trading & Telemetry Engine -->
-                <article class="glass-panel rounded-3xl overflow-hidden border border-white/10 group">
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
-                        <!-- Left Details -->
-                        <div class="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between h-full">
-                            <div>
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <span class="text-xs font-mono text-neutral-400 tracking-widest uppercase">[CASE 03]</span>
-                                    <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.06] text-neutral-300">
-                                        QUANTITATIVE TELEMETRY
-                                    </span>
-                                </div>
-                                <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
-                                    Automated Trading & Telemetry Engine
-                                </h3>
-                                <p class="text-sm text-neutral-400 leading-relaxed font-light mb-8">
-                                    High-frequency algorithmic execution architecture with microsecond order routing, continuous telemetry streams, and automated risk bounds.
-                                </p>
+                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
+                        <span class="text-[11px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/20">MQL5</span>
+                        <span class="text-[11px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/20">C++</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">3-EMA Strategy</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">RSI Filter</span>
+                    </div>
+                </div>
 
-                                <div class="space-y-3 mb-8">
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Algorithmic trading execution models with microsecond order routing</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Real-time data pipelines streaming sub-millisecond market events</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Distributed event logging with slippage and fill-rate telemetry</span>
-                                    </div>
-                                    <div class="flex items-start space-x-3 text-xs sm:text-sm text-neutral-300">
-                                        <span class="text-white">✓</span>
-                                        <span>Automated kill-switch and circuit-breaker risk matrix</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-6 border-t border-white/[0.08] flex items-center justify-between">
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Python</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">WebSockets</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">Docker</span>
-                                    <span class="text-[10px] font-mono text-neutral-400 px-2 py-1 rounded bg-black/60 border border-white/5">TimescaleDB</span>
-                                </div>
-                                <a href="#booking" class="text-xs font-semibold text-white flex items-center space-x-1 group-hover:text-neutral-300 transition-colors">
-                                    <span>Audit Specs</span>
-                                    <span class="text-xs">→</span>
-                                </a>
-                            </div>
+                <!-- Pillar 3: Zero-Knowledge & Cryptographic Invariance -->
+                <div class="glass-panel card-3d p-8 sm:p-10 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center justify-between mb-8">
+                            <span class="text-xs font-mono text-[#d4af37] tracking-widest uppercase">[02.C]</span>
+                            <span class="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
+                                CRYPTOGRAPHY & LEDGERS
+                            </span>
                         </div>
-
-                        <!-- Right Screenshot / Visual -->
-                        <div class="lg:col-span-7 showcase-img-container h-full min-h-[320px] sm:min-h-[420px] bg-black/80 border-t lg:border-t-0 lg:border-l border-white/[0.08] flex items-center justify-center p-4 sm:p-8">
-                            <img src="images/trading.jpg" alt="Automated Trading and Telemetry Engine Terminal Interface" class="showcase-img w-full h-auto rounded-xl object-cover border border-white/10 shadow-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light mb-6 group-hover:border-[#d4af37] transition-colors">
+                            <svg class="w-6 h-6 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#f8fafc] tracking-tight mb-4">
+                            Rust Ledgers & zk-SNARKs
+                        </h3>
+                        <p class="text-sm text-[#94a3b8] leading-relaxed mb-6 font-light">
+                            Mathematical verification of financial state invariance through double-entry accounting in Rust, paired with privacy-preserving zero-knowledge proofs.
+                        </p>
+                        
+                        <div class="space-y-3.5 mb-8">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Rust double-entry ACID ledger engine with strict cryptographic invariance</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">zk-SNARK biometric gating circuits for privacy-preserving authentication</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">Deterministic transaction logging with zero-trust audit telemetry</span>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-gold-light text-xs mt-1">✦</span>
+                                <span class="text-xs sm:text-sm text-neutral-300">State channel synchronization across distributed untrusted nodes</span>
+                            </div>
                         </div>
                     </div>
-                </article>
+
+                    <div class="pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
+                        <span class="text-[11px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/20">Rust</span>
+                        <span class="text-[11px] font-mono text-gold-pale px-2.5 py-1 rounded bg-[#12141a] border border-[#d4af37]/20">zk-SNARKs</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">ACID Invariance</span>
+                        <span class="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#12141a] border border-white/5">Zero-Trust</span>
+                    </div>
+                </div>
 
             </div>
         </section>
@@ -570,115 +586,284 @@
             <div class="hairline-divider"></div>
         </div>
 
-        <!-- 5. VETTED CREDENTIALS & INSTITUTIONAL TRUST -->
+        <!-- 5. TECHNICAL SKILLS MATRIX -->
+        <section id="skills" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div>
+                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#d4af37] uppercase mb-3">
+                        <span>[03]</span>
+                        <span>/</span>
+                        <span>TECHNICAL ARSENAL</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f8fafc] tracking-tight leading-tight">
+                        Technical Skills Matrix
+                    </h2>
+                </div>
+                <p class="text-sm sm:text-base text-[#94a3b8] max-w-md font-light leading-relaxed">
+                    Systems engineering languages, high-performance data stores, cloud edge topologies, and cryptographic verification suites.
+                </p>
+            </div>
+
+            <!-- Skills Matrix 4-Column Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-3d-wrap">
+                
+                <!-- Category 1: Systems Languages -->
+                <div class="glass-panel card-3d p-6 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center space-x-2 text-xs font-mono text-[#d4af37] uppercase tracking-wider mb-4">
+                            <span>01 //</span>
+                            <span>SYSTEMS LANGUAGES</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4">Core Execution</h4>
+                        <ul class="space-y-3 text-xs sm:text-sm text-neutral-300">
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Go (Golang)</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Goroutines / APIs</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Rust</span>
+                                <span class="font-mono text-[10px] text-gold-pale">ACID / Memory Safety</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">MQL5 / C++</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Algorithmic Quant</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Python</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Async / ML Pipelines</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="font-medium text-white">TypeScript</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Node / Edge Runtime</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 2: Data Stores & Caching -->
+                <div class="glass-panel card-3d p-6 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center space-x-2 text-xs font-mono text-[#d4af37] uppercase tracking-wider mb-4">
+                            <span>02 //</span>
+                            <span>DATA STORES & CACHING</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4">Persistence & State</h4>
+                        <ul class="space-y-3 text-xs sm:text-sm text-neutral-300">
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">PostgreSQL</span>
+                                <span class="font-mono text-[10px] text-gold-pale">ACID Partitioning</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Redis</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Cluster / PubSub</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">PgBouncer</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Pool Optimization</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">TimescaleDB</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Time-Series Ticks</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="font-medium text-white">MongoDB</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Document Sharding</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 3: DevOps & Distributed Infra -->
+                <div class="glass-panel card-3d p-6 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center space-x-2 text-xs font-mono text-[#d4af37] uppercase tracking-wider mb-4">
+                            <span>03 //</span>
+                            <span>DEVOPS & INFRA</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4">Cloud & Reliability</h4>
+                        <ul class="space-y-3 text-xs sm:text-sm text-neutral-300">
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Docker</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Multi-Stage Builds</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Cloudflare Edge</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Workers / Caching</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Linux Kernel</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Systemd / Tuning</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Kafka / RabbitMQ</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Message Streams</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="font-medium text-white">CI/CD Pipelines</span>
+                                <span class="font-mono text-[10px] text-neutral-400">GitHub Actions</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Category 4: Cryptography & Quant Systems -->
+                <div class="glass-panel card-3d p-6 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
+                        <div class="flex items-center space-x-2 text-xs font-mono text-[#d4af37] uppercase tracking-wider mb-4">
+                            <span>04 //</span>
+                            <span>QUANT & SECURITY</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4">Verification & Algos</h4>
+                        <ul class="space-y-3 text-xs sm:text-sm text-neutral-300">
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">zk-SNARKs</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Zero-Knowledge Auth</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">Double-Entry ACID</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Balance Invariance</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">3-EMA Algorithm</span>
+                                <span class="font-mono text-[10px] text-gold-pale">Pullback Detection</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2 border-b border-white/[0.05]">
+                                <span class="font-medium text-white">WebSockets</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Sub-ms Streaming</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="font-medium text-white">mTLS & OpenSSL</span>
+                                <span class="font-mono text-[10px] text-neutral-400">Transport Security</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Hairline Divider -->
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="hairline-divider"></div>
+        </div>
+
+        <!-- 6. VETTED CREDENTIALS & RIGOR -->
         <section id="credentials" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
             <!-- Section Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                 <div>
-                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-neutral-500 uppercase mb-3">
-                        <span>[03]</span>
+                    <div class="flex items-center space-x-2 text-xs font-mono tracking-widest text-[#d4af37] uppercase mb-3">
+                        <span>[04]</span>
                         <span>/</span>
-                        <span>VETTED CREDENTIALS & INSTITUTIONAL TRUST</span>
+                        <span>VETTED CREDENTIALS & TRUST</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f8fafc] tracking-tight leading-tight">
                         Verified Technical Rigor
                     </h2>
                 </div>
-                <p class="text-sm sm:text-base text-neutral-400 max-w-md font-light leading-relaxed">
+                <p class="text-sm sm:text-base text-[#94a3b8] max-w-md font-light leading-relaxed">
                     Formal computer science education coupled with top-tier algorithmic and cloud intelligence certifications.
                 </p>
             </div>
 
             <!-- Bento Badges Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 card-3d-wrap">
                 
                 <!-- Credential 1: AWS Certified AI Practitioner -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
+                <div class="glass-panel card-3d p-8 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
                         <div class="flex items-center justify-between mb-6">
-                            <div class="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-white">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-10 h-10 rounded-lg bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light">
+                                <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"></path>
                                 </svg>
                             </div>
-                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-white/[0.08] text-neutral-300">
+                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
                                 2026 SPEC
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white tracking-tight mb-2">
+                        <h3 class="text-xl font-bold text-[#f8fafc] tracking-tight mb-2">
                             AWS Certified AI Practitioner
                         </h3>
-                        <p class="text-xs text-neutral-400 font-mono tracking-wide uppercase mb-4">
+                        <p class="text-xs text-[#d4af37] font-mono tracking-wide uppercase mb-4">
                             Amazon Web Services (AWS)
                         </p>
-                        <p class="text-xs text-neutral-300 font-light leading-relaxed mb-6">
+                        <p class="text-xs text-[#94a3b8] font-light leading-relaxed mb-6">
                             Certified in Generative AI architectures, foundation model integration, AWS Bedrock, SageMaker ML pipelines, governance, and enterprise cloud compliance.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-neutral-400">
+                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-[#94a3b8]">
                         <span>Status: Verified Official</span>
-                        <span class="text-white">Active ✓</span>
+                        <span class="text-gold-light">Active ✓</span>
                     </div>
                 </div>
 
-                <!-- Credential 2: Vetted Full-Stack JavaScript Engineer -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
+                <!-- Credential 2: Vetted Full-Stack & Systems Engineer -->
+                <div class="glass-panel card-3d p-8 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
                         <div class="flex items-center justify-between mb-6">
-                            <div class="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-white">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-10 h-10 rounded-lg bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light">
+                                <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-white/[0.08] text-neutral-300">
+                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
                                 TOP 1% PERCENTILE
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white tracking-tight mb-2">
-                            Vetted Full-Stack JS Engineer
+                        <h3 class="text-xl font-bold text-[#f8fafc] tracking-tight mb-2">
+                            Turing Vetted Lead Engineer
                         </h3>
-                        <p class="text-xs text-neutral-400 font-mono tracking-wide uppercase mb-4">
+                        <p class="text-xs text-[#d4af37] font-mono tracking-wide uppercase mb-4">
                             Turing Technical Assessment
                         </p>
-                        <p class="text-xs text-neutral-300 font-light leading-relaxed mb-6">
-                            Rigorous algorithmic vetting and full-stack software evaluations passed in top percentile. Assessed on complex asynchronous Node.js systems, React architectures, and distributed state logic.
+                        <p class="text-xs text-[#94a3b8] font-light leading-relaxed mb-6">
+                            Rigorous algorithmic vetting and software evaluations passed in top percentile. Assessed on complex asynchronous systems, high-concurrency memory models, and distributed state logic.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-neutral-400">
+                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-[#94a3b8]">
                         <span>Score: Top Percentile</span>
-                        <span class="text-white">Verified ✓</span>
+                        <span class="text-gold-light">Verified ✓</span>
                     </div>
                 </div>
 
                 <!-- Credential 3: B.S. in Computer Science -->
-                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between group">
-                    <div>
+                <div class="glass-panel card-3d p-8 rounded-2xl flex flex-col justify-between group">
+                    <div class="card-specular-glow"></div>
+                    <div class="card-3d-content">
                         <div class="flex items-center justify-between mb-6">
-                            <div class="w-10 h-10 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-white">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="w-10 h-10 rounded-lg bg-[#12141a] border border-[#d4af37]/30 flex items-center justify-center text-gold-light">
+                                <svg class="w-5 h-5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"></path>
                                 </svg>
                             </div>
-                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-white/[0.08] text-neutral-300">
+                            <span class="text-[10px] font-mono tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/10 border border-[#d4af37]/30 text-gold-pale">
                                 HIGHER ACADEMIC
                             </span>
                         </div>
-                        <h3 class="text-xl font-bold text-white tracking-tight mb-2">
+                        <h3 class="text-xl font-bold text-[#f8fafc] tracking-tight mb-2">
                             B.S. in Computer Science
                         </h3>
-                        <p class="text-xs text-neutral-400 font-mono tracking-wide uppercase mb-4">
+                        <p class="text-xs text-[#d4af37] font-mono tracking-wide uppercase mb-4">
                             University of the People
                         </p>
-                        <p class="text-xs text-neutral-300 font-light leading-relaxed mb-6">
+                        <p class="text-xs text-[#94a3b8] font-light leading-relaxed mb-6">
                             Formal undergraduate computer science foundations covering Distributed Systems, Data Structures & Algorithms, OS Kernels, Relational Database Theory, and Network Protocols.
                         </p>
                     </div>
 
-                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-neutral-400">
+                    <div class="pt-4 border-t border-white/[0.08] flex items-center justify-between text-xs font-mono text-[#94a3b8]">
                         <span>Discipline: CS & Systems</span>
-                        <span class="text-white">Degree Track ✓</span>
+                        <span class="text-gold-light">Degree Track ✓</span>
                     </div>
                 </div>
 
@@ -690,103 +875,113 @@
             <div class="hairline-divider"></div>
         </div>
 
-        <!-- 6. EXECUTIVE ADVISORY & BOOKING SUITE (CALENDLY INTEGRATION) -->
-        <section id="booking" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
+        <!-- 7. CONTACT / TERMINAL FOOTER & ADVISORY SUITE -->
+        <section id="advisory" class="max-w-6xl mx-auto px-6 sm:px-8 py-24 lg:py-32">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <div class="inline-flex items-center space-x-2 text-xs font-mono tracking-widest text-neutral-500 uppercase mb-3">
-                    <span>[04]</span>
+                <div class="inline-flex items-center space-x-2 text-xs font-mono tracking-widest text-[#d4af37] uppercase mb-3">
+                    <span>[05]</span>
                     <span>/</span>
-                    <span>EXECUTIVE ADVISORY & BOOKING SUITE</span>
+                    <span>EXECUTIVE ADVISORY & DIRECT INQUIRY</span>
                 </div>
-                <h2 class="text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
-                    Book a Strategic 1-on-1 Advisory Session
+                <h2 class="text-3xl sm:text-5xl font-bold text-[#f8fafc] tracking-tight leading-tight mb-4">
+                    Architectural Consultation & Strategic Brief
                 </h2>
-                <p class="text-base sm:text-lg text-neutral-400 font-light leading-relaxed mb-8">
-                    Direct architectural consulting, AI feasibility roadmapping, or technical team guidance.
+                <p class="text-base sm:text-lg text-[#94a3b8] font-light leading-relaxed mb-8">
+                    Direct technical advisory, distributed systems design, or institutional quantitative engineering.
                 </p>
 
-                <!-- Prominent Rate Tag -->
-                <div class="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md">
-                    <span class="text-lg font-mono font-bold text-white tracking-tight">Rate: $25 USD / Hour</span>
+                <!-- Status & Rate Tag -->
+                <div class="inline-flex flex-col sm:flex-row items-center gap-3 px-6 py-3 rounded-2xl bg-[#12141a]/80 border border-[#d4af37]/25 backdrop-blur-md">
+                    <span class="text-base font-mono font-bold text-gold-light tracking-tight">Advisory Scope: Scalable Backends & Quant Engines</span>
                     <span class="hidden sm:inline text-neutral-600">•</span>
-                    <span class="text-xs text-neutral-400 font-mono uppercase tracking-wider">NDA-Protected • Actionable Technical Deliverables</span>
+                    <span class="text-xs text-[#94a3b8] font-mono uppercase tracking-wider">NDA-Protected • Actionable Technical Deliverables</span>
                 </div>
             </div>
 
-            <!-- Booking Container Grid: Calendly Widget + Enterprise Direct Inquiry -->
+            <!-- Grid: Calendly Widget + Terminal Direct Proposal -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
-                <!-- Left: Interactive Calendly Inline Widget -->
-                <div class="lg:col-span-7 glass-panel rounded-3xl p-4 sm:p-6 border border-white/10">
+                <!-- Left: Calendly Interactive Inline Scheduler -->
+                <div class="lg:col-span-6 glass-panel rounded-3xl p-4 sm:p-6 border border-[#d4af37]/20">
                     <div class="flex items-center justify-between px-2 py-2 mb-4 border-b border-white/[0.08]">
                         <div class="flex items-center space-x-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse"></span>
-                            <span class="text-xs font-mono text-neutral-300 uppercase tracking-wider">LIVE CALENDAR SCHEDULER</span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
+                            <span class="text-xs font-mono text-neutral-200 uppercase tracking-wider">LIVE CALENDAR SCHEDULER</span>
                         </div>
-                        <span class="text-[11px] font-mono text-neutral-400">Direct Slot Confirmation</span>
+                        <span class="text-[11px] font-mono text-[#d4af37]">Direct Slot Confirmation</span>
                     </div>
 
                     <!-- Calendly Container -->
-                    <div class="calendly-wrapper w-full overflow-hidden rounded-2xl min-h-[640px] bg-[#050505]">
-                        <!-- Embed an interactive Calendly container with placeholder widget script -->
-                        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-CALENDLY-HANDLE/consultation" style="min-width:320px;height:700px;"></div>
+                    <div class="calendly-wrapper w-full overflow-hidden rounded-2xl min-h-[620px] bg-[#0a0b0e]">
+                        <div class="calendly-inline-widget" data-url="https://calendly.com/YOUR-CALENDLY-HANDLE/consultation" style="min-width:320px;height:650px;"></div>
                         <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     </div>
                 </div>
 
-                <!-- Right: Enterprise Direct Inquiry / Project RFP -->
-                <div class="lg:col-span-5 glass-panel rounded-3xl p-8 sm:p-10 border border-white/10 flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">[DIRECT INTAKE]</span>
-                            <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-white/[0.05] text-neutral-300">
-                                24HR RESPONSE
-                            </span>
+                <!-- Right: Executive Terminal & Strategic Brief Form -->
+                <div class="lg:col-span-6 terminal-window rounded-3xl overflow-hidden border border-[#d4af37]/25 flex flex-col justify-between">
+                    <!-- Terminal Console Header -->
+                    <div class="terminal-header px-6 py-3.5 flex items-center justify-between">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                            <span class="ml-3 text-xs font-mono text-neutral-400">bash — dispatch-inquiry.sh</span>
                         </div>
+                        <span class="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-[#d4af37]/15 text-gold-pale border border-[#d4af37]/30">
+                            PRIORITY INTAKE
+                        </span>
+                    </div>
+
+                    <div class="p-8 sm:p-10">
+                        <div class="mb-6 font-mono text-xs text-[#d4af37]">
+                            <span>root@ayuba-garba:~$ ./dispatch-inquiry.sh --priority=immediate</span>
+                        </div>
+
                         <h3 class="text-2xl font-bold text-white tracking-tight mb-2">
-                            Enterprise RFP & Brief
+                            Executive Strategic Brief
                         </h3>
-                        <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed mb-6">
-                            Prefer submitting system specs or scheduling an institutional proposal directly? Transmit your project details below.
+                        <p class="text-xs sm:text-sm text-[#94a3b8] font-light leading-relaxed mb-6">
+                            Transmitting system specifications, distributed backend requirements, or algorithmic architecture proposals directly to the engineering inbox.
                         </p>
 
                         <form id="advisoryInquiryForm" class="space-y-4">
                             <div>
-                                <label for="rfp-name" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Executive Name</label>
-                                <input type="text" id="rfp-name" required placeholder="e.g. Alex Vance, CTO" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-white/40 transition-colors">
+                                <label for="rfp-name" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Executive / Engineer Name</label>
+                                <input type="text" id="rfp-name" required placeholder="e.g. Elena Rostova, VP Engineering" class="w-full px-4 py-3 rounded-xl input-gold-focus text-xs sm:text-sm">
                             </div>
 
                             <div>
                                 <label for="rfp-email" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Corporate Email</label>
-                                <input type="email" id="rfp-email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-white/40 transition-colors">
+                                <input type="email" id="rfp-email" required placeholder="elena@company.com" class="w-full px-4 py-3 rounded-xl input-gold-focus text-xs sm:text-sm">
                             </div>
 
                             <div>
-                                <label for="rfp-scope" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Advisory Scope</label>
-                                <select id="rfp-scope" class="w-full px-4 py-3 rounded-xl bg-[#090C12] border border-white/10 text-neutral-200 text-xs sm:text-sm focus:outline-none focus:border-white/40 transition-colors">
-                                    <option value="Enterprise Full-Stack Architecture">Enterprise Full-Stack Architecture</option>
-                                    <option value="Applied AI & Agentic Automation">Applied AI & Agentic Automation</option>
-                                    <option value="Technical Due Diligence & Code Audit">Technical Due Diligence & Code Audit</option>
-                                    <option value="1-on-1 Strategy Session ($25/hr)">1-on-1 Strategy Session ($25/hr)</option>
-                                    <option value="Fractional Engineering Leadership">Fractional Engineering Leadership</option>
+                                <label for="rfp-scope" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">System Scope</label>
+                                <select id="rfp-scope" class="w-full px-4 py-3 rounded-xl bg-[#0e1017] border border-white/10 text-neutral-200 text-xs sm:text-sm focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] transition-colors">
+                                    <option value="Distributed Backend Architecture (Go/Rust)">Distributed Backend Architecture (Go/Rust)</option>
+                                    <option value="Algorithmic Execution & Quant Logic (MQL5/C++)">Algorithmic Execution & Quant Logic (MQL5/C++)</option>
+                                    <option value="zk-SNARKs & Cryptographic Verification">zk-SNARKs & Cryptographic Verification</option>
+                                    <option value="Database Optimization & Caching (PostgreSQL/Redis)">Database Optimization & Caching (PostgreSQL/Redis)</option>
+                                    <option value="Lead Software Engineer Role Inquiry">Lead Software Engineer Role Inquiry</option>
                                 </select>
                             </div>
 
                             <div>
-                                <label for="rfp-message" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Brief & System Context</label>
-                                <textarea id="rfp-message" rows="4" required placeholder="Outline key performance bottlenecks, timeline, and architectural targets..." class="w-full px-4 py-3 rounded-xl bg-black/50 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:border-white/40 transition-colors"></textarea>
+                                <label for="rfp-message" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5">Technical Brief & Performance Targets</label>
+                                <textarea id="rfp-message" rows="4" required placeholder="Outline target concurrency, SLA latency constraints, and deployment timeline..." class="w-full px-4 py-3 rounded-xl input-gold-focus text-xs sm:text-sm"></textarea>
                             </div>
 
-                            <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-white text-black font-semibold text-xs sm:text-sm hover:bg-neutral-200 transition-all hover:scale-[1.01] shadow-[0_0_20px_rgba(255,255,255,0.15)]">
-                                Submit Strategic Brief
+                            <button type="submit" class="w-full py-4 px-6 rounded-xl btn-gold-primary text-xs sm:text-sm font-bold uppercase tracking-wider">
+                                Transmit Strategic Brief
                             </button>
                         </form>
                     </div>
 
-                    <div class="mt-8 pt-6 border-t border-white/[0.08] flex items-center justify-between text-xs text-neutral-400 font-mono">
+                    <div class="px-8 py-5 border-t border-white/[0.08] flex items-center justify-between text-xs text-[#94a3b8] font-mono bg-[#0c0e14]/50">
                         <span>Direct Channel</span>
-                        <a href="mailto:ayubagarba.tech@gmail.com" class="text-white hover:underline">ayubagarba.tech@gmail.com</a>
+                        <a href="mailto:ayubagarba.tech@gmail.com" class="text-gold-light hover:underline">ayubagarba.tech@gmail.com</a>
                     </div>
                 </div>
 
@@ -795,30 +990,33 @@
 
     </main>
 
-    <!-- 7. MINIMALIST FOOTER -->
-    <footer class="relative z-10 border-t border-white/[0.08] bg-[#050505] py-12 px-6 sm:px-8">
+    <!-- 8. MINIMALIST TERMINAL FOOTER -->
+    <footer class="relative z-10 border-t border-[#d4af37]/20 bg-[#07080b] py-12 px-6 sm:px-8">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-400">
-            <!-- Left: Copyright -->
+            <!-- Left: Copyright & Monogram -->
             <div class="flex items-center space-x-3">
+                <div class="w-6 h-6 rounded-full monogram-ag flex items-center justify-center">
+                    <span class="text-[9px] font-mono font-bold text-gold-metallic">AG</span>
+                </div>
                 <span class="font-mono text-neutral-300">© 2026 Office of Ayuba Garba. All rights reserved.</span>
             </div>
 
             <!-- Middle: Location & WAT Time -->
-            <div class="flex items-center space-x-2 font-mono text-[11px] text-neutral-400">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
+            <div class="flex items-center space-x-2 font-mono text-[11px] text-neutral-300">
+                <span class="status-pulse-emerald"></span>
                 <span>SYSTEM ONLINE •</span>
-                <span id="office-local-time">WAT</span>
+                <span id="office-local-time" class="text-gold-light">WAT</span>
             </div>
 
-            <!-- Right: Monochrome Social Anchors & Top Scroll -->
+            <!-- Right: Monochrome & Gold Social Anchors -->
             <div class="flex items-center space-x-6">
-                <a href="https://github.com/BrightQueen2024" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://github.com/BrightQueen2024" target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">
                     GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/ayuba-garba-54b986236" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/in/ayuba-garba-54b986236" target="_blank" rel="noopener noreferrer" class="hover:text-gold-light transition-colors">
                     LinkedIn
                 </a>
-                <a href="mailto:ayubagarba.tech@gmail.com" class="hover:text-white transition-colors">
+                <a href="mailto:ayubagarba.tech@gmail.com" class="hover:text-gold-light transition-colors">
                     Email
                 </a>
                 <a href="#hero" class="text-neutral-500 hover:text-white transition-colors flex items-center space-x-1" title="Back to top">
