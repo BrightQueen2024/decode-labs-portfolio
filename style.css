@@ -1,8 +1,8 @@
 /* 
-  OFFICE OF AYUBA GARBA — EXECUTIVE 3D GLASSMORPHISM DESIGN SYSTEM
-  High-Contrast Palette: Charcoal Black (#0a0b0e), Pure White (#f8fafc / #ffffff),
+  OFFICE OF AYUBA GARBA — EXECUTIVE 3D MINIMALIST GLASSMORPHISM DESIGN SYSTEM
+  High-Contrast Palette: Charcoal Black (#0a0b0e), Pure White (#ffffff / #f8fafc),
   Slate Gray (#94a3b8), and Metallic Gold (#d4af37 / #fef08a / #996515)
-  Lead Software Engineer • Distributed Backends, Algorithmic Engines, Web3
+  Systems & Software Engineer • Distributed Architectures, High-Concurrency Backends (Go, Rust), Algorithmic Engines
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -24,13 +24,14 @@
   --gold-badge-border: rgba(212, 175, 55, 0.3);
   --gold-focus: rgba(212, 175, 55, 0.5);
 
-  /* Chamfered Bevel Borders */
+  /* Chamfered Dual-Layer Glass Borders */
   --border-chamfer: rgba(212, 175, 55, 0.18);
   --border-chamfer-hover: rgba(212, 175, 55, 0.45);
   --border-subtle: rgba(255, 255, 255, 0.08);
 
   /* High-Contrast Typography */
-  --text-white: #f8fafc;
+  --text-white: #ffffff;
+  --text-white-pure: #ffffff;
   --text-slate: #94a3b8;
   --text-muted: #64748b;
 
@@ -59,7 +60,7 @@ body {
   position: relative;
 }
 
-/* Film Grain Texture */
+/* Atmospheric Film Grain Texture */
 .noise-overlay {
   position: fixed;
   top: 0;
@@ -73,13 +74,13 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* 2. Interactive Ambient Gold Cursor Glow */
+/* Smooth Ambient Gold Cursor Spotlight */
 .ambient-spotlight {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  background: radial-gradient(650px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.065), transparent 70%);
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.06), transparent 70%);
   transition: background 0.04s ease-out;
 }
 
@@ -91,11 +92,11 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
 }
 
-/* 3D Glassmorphism & Chamfered Bevel Borders */
+/* 3D Glassmorphism & Dual-Layer Chamfered Bevel Borders */
 .glass-panel {
   background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-chamfer);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.7);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease-out, background 0.3s ease;
@@ -105,7 +106,7 @@ body {
 .glass-panel:hover {
   background: var(--bg-glass-hover);
   border-color: var(--border-chamfer-hover);
-  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.35), 0 25px 50px -12px rgba(212, 175, 55, 0.12), 0 0 25px rgba(212, 175, 55, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.35), 0 25px 50px -12px rgba(212, 175, 55, 0.14), 0 0 25px rgba(212, 175, 55, 0.07);
 }
 
 /* Secondary glass cards for nested components */
@@ -115,10 +116,12 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .glass-subcard:hover {
-  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(16, 20, 30, 0.85);
+  border-color: rgba(212, 175, 55, 0.3);
 }
 
 /* Ultra-Thin Frosted Glass Navigation */
@@ -131,7 +134,7 @@ body {
 }
 
 .glass-nav-scrolled {
-  background: rgba(10, 11, 14, 0.92);
+  background: rgba(10, 11, 14, 0.94);
   border-color: rgba(212, 175, 55, 0.35);
   box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.2), 0 25px 50px -10px rgba(0, 0, 0, 0.95), 0 0 20px rgba(212, 175, 55, 0.08);
 }
@@ -141,7 +144,7 @@ body {
   perspective: 1200px;
 }
 
-.card-3d {
+.card-3d, [data-tilt] {
   transform-style: preserve-3d;
   will-change: transform;
   transition: transform 0.12s ease-out;
@@ -163,7 +166,7 @@ body {
   z-index: 15;
 }
 
-.card-3d:hover .card-specular-glow {
+.card-3d:hover .card-specular-glow, [data-tilt]:hover .card-specular-glow {
   opacity: 1;
 }
 
@@ -191,6 +194,9 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 8px 24px rgba(212, 175, 55, 0.28);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-gold-primary:hover {
@@ -208,6 +214,9 @@ body {
   border: 1px solid rgba(212, 175, 55, 0.28);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 4px 16px rgba(0, 0, 0, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-gold-secondary:hover {
@@ -216,6 +225,20 @@ body {
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.3), 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* Ghost Button */
+.btn-gold-ghost {
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-pale);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  transition: all 0.25s ease;
+}
+
+.btn-gold-ghost:hover {
+  background: rgba(212, 175, 55, 0.18);
+  border-color: rgba(212, 175, 55, 0.5);
+  color: #ffffff;
 }
 
 /* Status Pulse: Glowing Green Indicator */
@@ -267,7 +290,7 @@ body {
   filter: contrast(108%) saturate(105%);
 }
 
-.glass-panel:hover .showcase-img {
+.glass-panel:hover .showcase-img, [data-tilt]:hover .showcase-img {
   transform: scale(1.035);
   filter: contrast(112%) saturate(110%);
 }
@@ -297,16 +320,16 @@ body {
   position: fixed;
   bottom: 28px;
   right: 28px;
-  z-index: 1000;
+  z-index: 2000;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 14px 24px;
-  background: rgba(18, 20, 26, 0.92);
+  background: rgba(18, 20, 26, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.25), 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.25), 0 20px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.15);
   border-radius: 9999px;
   color: var(--text-white);
   font-size: 14px;
@@ -363,4 +386,156 @@ body {
   border-radius: 1.25rem;
   border: 1px solid rgba(212, 175, 55, 0.18);
   overflow: hidden;
+}
+
+/* Monospace Technical Stack Matrix Badges */
+.tech-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 0.875rem;
+  border-radius: 0.5rem;
+  background: rgba(14, 16, 22, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-badge:hover {
+  background: rgba(22, 27, 38, 0.95);
+  border-color: rgba(212, 175, 55, 0.45);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 12px rgba(212, 175, 55, 0.12);
+}
+
+.tech-badge-primary {
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #fff1a8;
+}
+
+.tech-badge-primary:hover {
+  border-color: #d4af37;
+  color: #ffffff;
+}
+
+/* ========================================================
+   4. INTERACTIVE CERTIFICATE VIEWER MODAL DIALOG
+   ======================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(7, 8, 11, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-container {
+  background: rgba(18, 21, 30, 0.95);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.3), 0 35px 70px -15px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.12);
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-overlay.active .modal-container {
+  transform: scale(1) translateY(0);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: rgba(212, 175, 55, 0.6);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* Certificate Preview Card Click Hover Effect */
+.cert-card {
+  cursor: pointer;
+}
+
+.cert-card .cert-thumb-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #06070a;
+}
+
+.cert-card .cert-thumb-wrap::after {
+  content: 'CLICK TO INSPECT RECORD';
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 11, 14, 0.78);
+  backdrop-filter: blur(4px);
+  color: #fff1a8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cert-card:hover .cert-thumb-wrap::after {
+  opacity: 1;
+}
+
+/* Code copy button */
+.copy-badge-btn {
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: var(--gold-pale);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-badge-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--gold-primary);
+  color: #ffffff;
 }

@@ -68,22 +68,47 @@ for (const filePath of htmlFiles) {
     }
 }
 
-// 4. Validate Critical Images
+// 4. Validate Critical Platform Images
 const requiredImages = [
     'nexaverse.jpg',
     'trading.jpg',
     'awsoli.jpg',
+    'taila.jpg',
+    'savilinks.jpg',
+    'defenzio.jpg',
+    'kingdomconnect.jpg',
     'profile.jpg.jpeg'
 ];
 
 for (const imgName of requiredImages) {
     const pubImg = path.join(__dirname, '..', 'public', 'images', imgName);
     const pubProfile = path.join(__dirname, '..', 'public', imgName);
-    const exists = fs.existsSync(pubImg) || fs.existsSync(pubProfile);
+    const rootImg = path.join(__dirname, '..', 'images', imgName);
+    const rootProfile = path.join(__dirname, '..', imgName);
+    const exists = fs.existsSync(pubImg) || fs.existsSync(pubProfile) || fs.existsSync(rootImg) || fs.existsSync(rootProfile);
     if (exists) {
         console.log(`✅ [ASSET] Image exists: ${imgName}`);
     } else {
         console.error(`❌ [ASSET] Missing image: ${imgName}`);
+        errorCount++;
+    }
+}
+
+// 5. Validate High-Resolution Verified Certificates
+const requiredCertificates = [
+    'walmart-advanced-engineering.png',
+    'aws-ai-practitioner.png',
+    'uopeople-emotional-intelligence.jpg'
+];
+
+for (const certName of requiredCertificates) {
+    const pubCert = path.join(__dirname, '..', 'public', 'assets', 'certificates', certName);
+    const rootCert = path.join(__dirname, '..', 'assets', 'certificates', certName);
+    const exists = fs.existsSync(pubCert) && fs.existsSync(rootCert);
+    if (exists) {
+        console.log(`✅ [CERTIFICATE] Verified asset exists: ${certName}`);
+    } else {
+        console.error(`❌ [CERTIFICATE] Missing certificate asset: ${certName}`);
         errorCount++;
     }
 }

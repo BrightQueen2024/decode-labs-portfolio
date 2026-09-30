@@ -1,36 +1,38 @@
 /**
  * OFFICE OF AYUBA GARBA — BESPOKE ARCHITECTURAL CLIENT SCRIPTS
  * 3D Glassmorphic Perspective Tilt, Radial Ambient Gold Spotlight,
- * Active Nav Tracking, Terminal Inquiry Handler & Real-Time Telemetry
+ * Interactive Certificate Viewer Modal, Navigation Tracking, and Form Handlers
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Interactive Ambient Gold Cursor Spotlight
+    // ========================================================
+    // 1. INTERACTIVE AMBIENT GOLD CURSOR SPOTLIGHT
+    // ========================================================
     const updateAmbientSpotlight = (e) => {
         document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
         document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
     };
     window.addEventListener('mousemove', updateAmbientSpotlight, { passive: true });
 
-    // 2. Dynamic 3D Card Tilt Engine with Specular Shimmer
-    const cards3D = document.querySelectorAll('.card-3d');
-    
-    // Check if device supports hover / mouse pointing
+    // ========================================================
+    // 2. DYNAMIC 3D PERSPECTIVE TILT ENGINE ([data-tilt] & .card-3d)
+    // ========================================================
+    const tiltElements = document.querySelectorAll('.card-3d, [data-tilt]');
     const isTouchDevice = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
-    if (!isTouchDevice && cards3D.length > 0) {
-        cards3D.forEach((card) => {
+    if (!isTouchDevice && tiltElements.length > 0) {
+        tiltElements.forEach((el) => {
             let isHovered = false;
 
-            card.addEventListener('mouseenter', () => {
+            el.addEventListener('mouseenter', () => {
                 isHovered = true;
-                card.style.transition = 'transform 0.08s ease-out';
+                el.style.transition = 'transform 0.08s ease-out';
             });
 
-            card.addEventListener('mousemove', (e) => {
+            el.addEventListener('mousemove', (e) => {
                 if (!isHovered) return;
-                const rect = card.getBoundingClientRect();
+                const rect = el.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
@@ -41,28 +43,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const rotateX = ((y - centerY) / centerY) * -6;
                 const rotateY = ((x - centerX) / centerX) * 6;
 
-                card.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
+                el.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
                 
                 // Track specular light spot
-                card.style.setProperty('--card-mouse-x', `${x}px`);
-                card.style.setProperty('--card-mouse-y', `${y}px`);
+                el.style.setProperty('--card-mouse-x', `${x}px`);
+                el.style.setProperty('--card-mouse-y', `${y}px`);
             });
 
-            card.addEventListener('mouseleave', () => {
+            el.addEventListener('mouseleave', () => {
                 isHovered = false;
-                card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-                card.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+                el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                el.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
             });
         });
     }
 
-    // 3. Sleek Toast Notification Engine
+    // ========================================================
+    // 3. SLEEK GLASS TOAST NOTIFICATION ENGINE
+    // ========================================================
     window.showGlassToast = (message, icon = '✦') => {
         const existingToast = document.querySelector('.glass-toast');
         if (existingToast) existingToast.remove();
 
         const toast = document.createElement('div');
         toast.className = 'glass-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
         toast.innerHTML = `
             <span class="text-sm font-semibold text-gold-metallic">${icon}</span>
             <span class="tracking-tight text-white">${message}</span>
@@ -80,7 +86,201 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4500);
     };
 
-    // 4. Sticky Navbar Glass Morph on Scroll
+    // ========================================================
+    // 4. CERTIFICATE MODAL DIALOG ENGINE
+    // ========================================================
+    const certModalOverlay = document.getElementById('certModalOverlay');
+    const certModalContainer = document.getElementById('certModalContainer');
+    const certModalClose = document.getElementById('certModalClose');
+
+    // Certificate Records Registry
+    const CERTIFICATE_DATA = {
+        'walmart': {
+            title: 'Advanced Software Engineering (Job Simulation)',
+            issuer: 'Walmart Global Tech / Forage',
+            date: 'Completed July 27, 2026',
+            competencies: [
+                'Advanced Data Structures',
+                'Software Architecture',
+                'Relational Database Design',
+                'Data Munging'
+            ],
+            imageSrc: 'assets/certificates/walmart-advanced-engineering.png',
+            enrolmentCode: 'SuwohMZHJQWeglqsk',
+            userCode: '6a5b7d77d6ac6ea542da6011',
+            verifyUrl: 'https://www.theforage.com/simulations/walmart/advanced-software-engineering',
+            notes: 'Practical simulation evaluating relational data modeling, query optimization, high-throughput data munging pipelines, and enterprise architecture.'
+        },
+        'aws-ai': {
+            title: 'AWS AI Practitioner Challenge',
+            issuer: 'Udacity & Accenture',
+            date: 'Completed May 7, 2026',
+            competencies: [
+                'Machine Learning Pipelines',
+                'Cloud AI Services',
+                'AWS Infrastructure',
+                'Foundation Model Governance'
+            ],
+            imageSrc: 'assets/certificates/aws-ai-practitioner.png',
+            verifyUrl: 'https://udacity.com/certificate/e/4961dd9a-34ba-11f1-915e-0b6773dac5dc',
+            verificationCode: '4961dd9a-34ba-11f1-915e-0b6773dac5dc',
+            notes: 'Verified certification validating cloud AI foundations, AWS SageMaker pipeline lifecycle, generative foundation models, and secure cloud ML infrastructure.'
+        },
+        'uopeople': {
+            title: 'Emotional Intelligence in Teamwork',
+            issuer: 'University of the People',
+            date: 'Completed July 29, 2026',
+            competencies: [
+                'Strengthening Workplace Relationships',
+                'Cross-Functional Teamwork',
+                'Engineering Leadership',
+                'Collaborative Architecture'
+            ],
+            imageSrc: 'assets/certificates/uopeople-emotional-intelligence.jpg',
+            verificationCode: '466627bb-9e07-4a6e-b4a1-07b85073c5db',
+            verifyUrl: null,
+            notes: 'University co-curricular event focused on high-performance cross-functional collaboration, team empathy, psychological safety, and consensus-driven systems architecture.'
+        }
+    };
+
+    let lastFocusedElement = null;
+
+    const openCertificateModal = (certKey) => {
+        const cert = CERTIFICATE_DATA[certKey];
+        if (!cert || !certModalOverlay) return;
+
+        lastFocusedElement = document.activeElement;
+
+        // Populate modal fields
+        const modalImg = document.getElementById('certModalImage');
+        const modalTitle = document.getElementById('certModalTitle');
+        const modalIssuer = document.getElementById('certModalIssuer');
+        const modalDate = document.getElementById('certModalDate');
+        const modalCompetencies = document.getElementById('certModalCompetencies');
+        const modalVerificationDetails = document.getElementById('certModalVerificationDetails');
+        const modalNotes = document.getElementById('certModalNotes');
+
+        if (modalImg) {
+            modalImg.src = cert.imageSrc;
+            modalImg.alt = `${cert.title} - ${cert.issuer}`;
+        }
+        if (modalTitle) modalTitle.textContent = cert.title;
+        if (modalIssuer) modalIssuer.textContent = cert.issuer;
+        if (modalDate) modalDate.textContent = cert.date;
+        if (modalNotes) modalNotes.textContent = cert.notes;
+
+        if (modalCompetencies) {
+            modalCompetencies.innerHTML = cert.competencies.map(comp => 
+                `<span class="text-xs font-mono px-3 py-1 rounded bg-[#12141a] border border-[#d4af37]/30 text-gold-pale flex items-center gap-1.5">
+                    <span class="text-gold-light">✦</span> ${comp}
+                </span>`
+            ).join('');
+        }
+
+        if (modalVerificationDetails) {
+            let html = '';
+            if (cert.enrolmentCode && cert.userCode) {
+                html += `
+                    <div class="space-y-2">
+                        <div class="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">Verification Codes</div>
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <span class="text-xs font-mono px-3 py-1.5 rounded bg-[#0a0c10] border border-white/10 text-neutral-300">
+                                Enrolment: <strong class="text-gold-light font-bold">${cert.enrolmentCode}</strong>
+                            </span>
+                            <button class="copy-badge-btn text-[11px] px-2.5 py-1.5 rounded transition-all" onclick="navigator.clipboard.writeText('${cert.enrolmentCode}'); showGlassToast('Enrolment code copied: ${cert.enrolmentCode}', '✓');">
+                                Copy Enrolment
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-2 items-center pt-1">
+                            <span class="text-xs font-mono px-3 py-1.5 rounded bg-[#0a0c10] border border-white/10 text-neutral-300">
+                                User Code: <strong class="text-gold-light font-bold">${cert.userCode}</strong>
+                            </span>
+                            <button class="copy-badge-btn text-[11px] px-2.5 py-1.5 rounded transition-all" onclick="navigator.clipboard.writeText('${cert.userCode}'); showGlassToast('User code copied: ${cert.userCode}', '✓');">
+                                Copy User Code
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else if (cert.verificationCode) {
+                html += `
+                    <div class="space-y-2">
+                        <div class="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">Verification Code / ID</div>
+                        <div class="flex flex-wrap gap-2 items-center">
+                            <span class="text-xs font-mono px-3 py-1.5 rounded bg-[#0a0c10] border border-white/10 text-neutral-300 break-all">
+                                ID: <strong class="text-gold-light font-bold">${cert.verificationCode}</strong>
+                            </span>
+                            <button class="copy-badge-btn text-[11px] px-2.5 py-1.5 rounded transition-all" onclick="navigator.clipboard.writeText('${cert.verificationCode}'); showGlassToast('Verification ID copied to clipboard', '✓');">
+                                Copy Code
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (cert.verifyUrl) {
+                html += `
+                    <div class="pt-3">
+                        <a href="${cert.verifyUrl}" target="_blank" rel="noopener noreferrer" class="btn-gold-secondary text-xs px-4 py-2 rounded-full inline-flex items-center gap-1.5">
+                            <span>Open Official Verification Gateway</span>
+                            <svg class="w-3.5 h-3.5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </div>
+                `;
+            }
+
+            modalVerificationDetails.innerHTML = html;
+        }
+
+        // Show modal
+        certModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (certModalClose) certModalClose.focus();
+    };
+
+    const closeCertificateModal = () => {
+        if (!certModalOverlay) return;
+        certModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lastFocusedElement) {
+            lastFocusedElement.focus();
+        }
+    };
+
+    // Card trigger listeners
+    document.querySelectorAll('[data-cert-key]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const certKey = trigger.getAttribute('data-cert-key');
+            openCertificateModal(certKey);
+        });
+    });
+
+    // Close button click
+    if (certModalClose) {
+        certModalClose.addEventListener('click', closeCertificateModal);
+    }
+
+    // Backdrop click dismiss
+    if (certModalOverlay) {
+        certModalOverlay.addEventListener('click', (e) => {
+            if (e.target === certModalOverlay) {
+                closeCertificateModal();
+            }
+        });
+    }
+
+    // Keyboard ESC listener
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && certModalOverlay && certModalOverlay.classList.contains('active')) {
+            closeCertificateModal();
+        }
+    });
+
+    // ========================================================
+    // 5. STICKY NAVBAR MORPH ON SCROLL
+    // ========================================================
     const floatingNavbar = document.getElementById('floating-navbar');
     window.addEventListener('scroll', () => {
         if (!floatingNavbar) return;
@@ -91,7 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // 5. Mobile Navigation Menu Toggle
+    // ========================================================
+    // 6. MOBILE NAVIGATION MENU TOGGLE
+    // ========================================================
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
@@ -103,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.add('hidden');
                 document.body.style.overflow = '';
                 mobileMenuBtn.innerHTML = `
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 `;
@@ -111,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
                 mobileMenuBtn.innerHTML = `
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 `;
@@ -125,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobileMenuOverlay.classList.add('hidden');
                 document.body.style.overflow = '';
                 mobileMenuBtn.innerHTML = `
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 `;
@@ -133,7 +335,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Active Section Highlighting in Floating Navbar
+    // ========================================================
+    // 7. ACTIVE SECTION HIGHLIGHTING IN FLOATING NAVBAR
+    // ========================================================
     const sections = document.querySelectorAll('section[id]');
     const navAnchors = document.querySelectorAll('.nav-link-item');
 
@@ -164,7 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNav, { passive: true });
     updateActiveNav();
 
-    // 7. Executive Terminal & RFP Inquiry Form Handler
+    // ========================================================
+    // 8. EXECUTIVE TERMINAL & RFP INQUIRY FORM HANDLER
+    // ========================================================
     const inquiryForm = document.getElementById('advisoryInquiryForm');
     if (inquiryForm) {
         inquiryForm.addEventListener('submit', async (e) => {
@@ -223,7 +429,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Smooth Scroll for Anchor CTAs with Offset
+    // ========================================================
+    // 9. SMOOTH SCROLL FOR ANCHOR CTAS WITH OFFSET
+    // ========================================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
@@ -246,7 +454,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 9. Dynamic WAT Local Time in Footer
+    // ========================================================
+    // 10. DYNAMIC WAT LOCAL TIME IN FOOTER
+    // ========================================================
     const localTimeEl = document.getElementById('office-local-time');
     if (localTimeEl) {
         const updateLocalTime = () => {
