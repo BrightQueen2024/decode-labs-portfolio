@@ -521,4 +521,53 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 8000);
         }
     });
+
+    // ========================================================
+    // 12. HIGH-RESOLUTION PORTRAIT LIGHTBOX MODAL
+    // ========================================================
+    const portraitModal = document.getElementById('portraitModal');
+
+    window.openPortraitModal = function(e) {
+        if (e) {
+            if (typeof e.preventDefault === 'function') e.preventDefault();
+            if (typeof e.stopPropagation === 'function') e.stopPropagation();
+        }
+        const modal = document.getElementById('portraitModal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closePortraitModal = function(e) {
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
+        const modal = document.getElementById('portraitModal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = '';
+    };
+
+    if (portraitModal) {
+        portraitModal.addEventListener('click', (e) => {
+            if (e.target === portraitModal) {
+                window.closePortraitModal();
+            }
+        });
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('portraitModal');
+            if (modal && !modal.classList.contains('hidden')) {
+                window.closePortraitModal();
+            }
+        }
+    });
+
+    document.querySelectorAll('.portrait-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            window.openPortraitModal(e);
+        });
+    });
 });
