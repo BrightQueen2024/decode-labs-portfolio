@@ -473,4 +473,52 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLocalTime();
         setInterval(updateLocalTime, 1000);
     }
+
+    // ========================================================
+    // 11. CALENDLY AUTO-RESET & POSTMESSAGE LISTENER
+    // ========================================================
+    window.resetCalendlyWidget = function() {
+        const container = document.querySelector('.calendly-inline-widget');
+        if (!container) return;
+
+        const currentUrl = container.getAttribute('data-url');
+        
+        // Clear the container content
+        container.innerHTML = '';
+        
+        // Re-initialize the widget cleanly using Calendly's global API
+        if (window.Calendly) {
+            window.Calendly.initInlineWidget({
+                url: currentUrl,
+                parentElement: container
+            });
+        } else {
+            // Fallback: Re-inject iframe if API isn't globally exposed
+            const iframe = document.createElement('iframe');
+            iframe.src = currentUrl;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            container.appendChild(iframe);
+        }
+
+        if (typeof window.showGlassToast === 'function') {
+            window.showGlassToast('Consultation scheduler reset to calendar view.', '✦');
+        }
+    };
+
+    // Listen for Calendly completion events across window boundaries
+    window.addEventListener('message', function(e) {
+        if (e.data && e.data.event === 'calendly.event_scheduled') {
+            console.log('Calendly booking confirmed. Scheduling widget auto-reset...');
+            if (typeof window.showGlassToast === 'function') {
+                window.showGlassToast('Booking confirmed! Resetting calendar in 8s...', '✓');
+            }
+            
+            // Automatically reset back to the calendar after 8 seconds of showing confirmation
+            setTimeout(() => {
+                window.resetCalendlyWidget();
+            }, 8000);
+        }
+    });
 });

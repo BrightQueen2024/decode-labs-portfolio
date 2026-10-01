@@ -1276,16 +1276,72 @@
                             <span class="w-2.5 h-2.5 rounded-full bg-[#10b981] animate-pulse"></span>
                             <span class="text-xs font-mono text-neutral-200 uppercase tracking-wider">LIVE CALENDAR SCHEDULER</span>
                         </div>
-                        <a href="https://calendly.com/ayubabright1" target="_blank" rel="noopener noreferrer" class="text-[11px] font-mono text-[#d4af37] hover:underline flex items-center gap-1">
-                            <span>calendly.com/ayubabright1</span>
-                            <span>↗</span>
-                        </a>
+                        <div class="flex items-center space-x-3">
+                            <button id="calendlyResetBtn" type="button" onclick="resetCalendlyWidget()" class="inline-flex items-center space-x-1.5 px-3 py-1 text-[11px] font-mono rounded-lg bg-[#12141a] border border-[#d4af37]/35 text-gold-pale hover:bg-[#1c212d] hover:border-[#d4af37] transition-all cursor-pointer" title="Reset Calendar View">
+                                <svg class="w-3.5 h-3.5 text-gold-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                                </svg>
+                                <span>Schedule Another Session</span>
+                            </button>
+                            <a href="https://calendly.com/ayubabright1" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex text-[11px] font-mono text-[#d4af37] hover:underline items-center gap-1">
+                                <span>Direct Link ↗</span>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Calendly Container -->
                     <div class="calendly-wrapper w-full overflow-hidden rounded-2xl min-h-[680px] bg-[#0a0b0e]">
                         <div class="calendly-inline-widget" data-url="https://calendly.com/ayubabright1?background_color=0a0b0e&text_color=ffffff&primary_color=d4af37" style="min-width:320px;height:700px;"></div>
                     </div>
+
+                    <!-- Calendly Auto-Reset & PostMessage Handler -->
+                    <script>
+                        // Function to reload and reset the Calendly widget to clean state
+                        function resetCalendlyWidget() {
+                            const container = document.querySelector('.calendly-inline-widget');
+                            if (!container) return;
+
+                            const currentUrl = container.getAttribute('data-url');
+                            
+                            // Clear the container content
+                            container.innerHTML = '';
+                            
+                            // Re-initialize the widget cleanly using Calendly's global API
+                            if (window.Calendly) {
+                                window.Calendly.initInlineWidget({
+                                    url: currentUrl,
+                                    parentElement: container
+                                });
+                            } else {
+                                // Fallback: Re-inject iframe if API isn't globally exposed
+                                const iframe = document.createElement('iframe');
+                                iframe.src = currentUrl;
+                                iframe.style.width = '100%';
+                                iframe.style.height = '100%';
+                                iframe.style.border = 'none';
+                                container.appendChild(iframe);
+                            }
+
+                            if (typeof showGlassToast === 'function') {
+                                showGlassToast('Consultation scheduler reset to calendar view.', '✦');
+                            }
+                        }
+
+                        // Listen for Calendly completion events across window boundaries
+                        window.addEventListener('message', function(e) {
+                            if (e.data && e.data.event === 'calendly.event_scheduled') {
+                                console.log('Calendly booking confirmed. Scheduling widget auto-reset...');
+                                if (typeof showGlassToast === 'function') {
+                                    showGlassToast('Booking confirmed! Resetting calendar in 8s...', '✓');
+                                }
+                                
+                                // Automatically reset back to the calendar after 8 seconds of showing confirmation
+                                setTimeout(() => {
+                                    resetCalendlyWidget();
+                                }, 8000);
+                            }
+                        });
+                    </script>
                 </div>
 
                 <!-- Right: Executive Terminal & Strategic Brief Form -->
