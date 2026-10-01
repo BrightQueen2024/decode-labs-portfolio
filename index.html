@@ -45,6 +45,7 @@
                     },
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        heading: ['"Plus Jakarta Sans"', 'sans-serif'],
                         mono: ['"JetBrains Mono"', 'monospace']
                     }
                 }
@@ -67,17 +68,30 @@
     <!-- FLOATING ULTRA-THIN FROSTED GLASS HEADER -->
     <header class="fixed top-5 left-0 right-0 z-50 px-4 sm:px-6 pointer-events-none">
         <nav id="floating-navbar" class="pointer-events-auto max-w-6xl mx-auto glass-nav px-5 py-3 rounded-full flex items-center justify-between transition-all duration-300">
-            <!-- Left: Monogram AG & Identity -->
-            <a href="#hero" class="flex items-center space-x-3 group" aria-label="Ayuba Garba Portfolio Top">
-                <div class="w-9 h-9 rounded-full monogram-ag overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
-                    <span class="text-xs font-mono font-bold text-gold-metallic tracking-wider">AG</span>
+            <!-- Left: Brand Anchor with Integrated Portrait Logo -->
+            <a href="#" class="flex items-center gap-3.5 group cursor-pointer" aria-label="Ayuba Garba Portfolio Top">
+                <!-- 3D Gold Halo Outer Container -->
+                <div class="relative w-10 h-10 md:w-11 md:h-11 rounded-full p-[1.5px] bg-gradient-to-tr from-amber-500/30 via-amber-300 to-amber-600/20 shadow-lg shadow-amber-400/10 group-hover:shadow-amber-400/25 group-hover:scale-105 transition-all duration-300">
+                    <!-- Inner Dark Ring Frame -->
+                    <div class="w-full h-full rounded-full bg-[#0a0b0e] p-[1.5px] overflow-hidden flex items-center justify-center">
+                        <!-- Profile Image Logo -->
+                        <img 
+                            src="assets/profile.png" 
+                            alt="Ayuba Garba" 
+                            class="w-full h-full object-cover object-top rounded-full filter contrast-105 group-hover:brightness-110 transition-all duration-300"
+                        />
+                    </div>
+                    <!-- Active Indicator Pip -->
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#0a0b0e]"></span>
                 </div>
+
+                <!-- Text Branding -->
                 <div class="flex flex-col">
-                    <span class="text-xs font-bold tracking-tight text-white group-hover:text-gold-light transition-colors uppercase">
-                        AYUBA GARBA
+                    <span class="font-heading font-extrabold text-sm md:text-base tracking-wider text-white group-hover:text-amber-300 transition-colors">
+                        AYUBA GARBA<span class="text-amber-400">.</span>
                     </span>
-                    <span class="text-[9px] font-mono tracking-widest text-[#d4af37] uppercase -mt-0.5">
-                        SYSTEMS &amp; SOFTWARE ENGINEER
+                    <span class="text-[10px] font-mono tracking-widest uppercase text-slate-400 -mt-0.5">
+                        Systems &amp; Software Engineer
                     </span>
                 </div>
             </a>
@@ -1434,8 +1448,10 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-400">
             <!-- Left: Copyright & Monogram -->
             <div class="flex items-center space-x-3">
-                <div class="w-6 h-6 rounded-full monogram-ag flex items-center justify-center">
-                    <span class="text-[9px] font-mono font-bold text-gold-metallic">AG</span>
+                <div class="relative w-7 h-7 rounded-full p-[1px] bg-gradient-to-tr from-amber-500/40 via-amber-300 to-amber-600/20 shadow-sm flex items-center justify-center">
+                    <div class="w-full h-full rounded-full bg-[#0a0b0e] overflow-hidden flex items-center justify-center">
+                        <img src="assets/profile.png" alt="Ayuba Garba" class="w-full h-full object-cover object-top rounded-full filter contrast-105" />
+                    </div>
                 </div>
                 <span class="font-mono text-neutral-300">© 2026 Office of Ayuba Garba. All rights reserved.</span>
             </div>

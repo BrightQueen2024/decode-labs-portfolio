@@ -77,15 +77,18 @@ const requiredImages = [
     'savilinks.jpg',
     'defenzio.jpg',
     'kingdomconnect.jpg',
-    'profile.jpg.jpeg'
+    'profile.jpg.jpeg',
+    'profile.png'
 ];
 
 for (const imgName of requiredImages) {
     const pubImg = path.join(__dirname, '..', 'public', 'images', imgName);
     const pubProfile = path.join(__dirname, '..', 'public', imgName);
+    const pubAssets = path.join(__dirname, '..', 'public', 'assets', imgName);
     const rootImg = path.join(__dirname, '..', 'images', imgName);
     const rootProfile = path.join(__dirname, '..', imgName);
-    const exists = fs.existsSync(pubImg) || fs.existsSync(pubProfile) || fs.existsSync(rootImg) || fs.existsSync(rootProfile);
+    const rootAssets = path.join(__dirname, '..', 'assets', imgName);
+    const exists = fs.existsSync(pubImg) || fs.existsSync(pubProfile) || fs.existsSync(pubAssets) || fs.existsSync(rootImg) || fs.existsSync(rootProfile) || fs.existsSync(rootAssets);
     if (exists) {
         console.log(`✅ [ASSET] Image exists: ${imgName}`);
     } else {
