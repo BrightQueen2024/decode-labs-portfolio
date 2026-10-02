@@ -116,6 +116,25 @@ for (const certName of requiredCertificates) {
     }
 }
 
+// 6. Validate Executive Technical Resume PDF
+const resumeFile = 'Ayuba_Garba_Resume.pdf';
+const pubResume = path.join(__dirname, '..', 'public', 'assets', resumeFile);
+const rootResume = path.join(__dirname, '..', 'assets', resumeFile);
+
+if (fs.existsSync(pubResume) && fs.existsSync(rootResume)) {
+    const pubSize = fs.statSync(pubResume).size;
+    const rootSize = fs.statSync(rootResume).size;
+    if (pubSize > 1000 && rootSize > 1000) {
+        console.log(`✅ [RESUME] Executive PDF verified: ${resumeFile} (Root: ${rootSize}B, Public: ${pubSize}B)`);
+    } else {
+        console.error(`❌ [RESUME] Resume PDF file is too small or corrupt: ${resumeFile}`);
+        errorCount++;
+    }
+} else {
+    console.error(`❌ [RESUME] Missing resume PDF in root or public assets: ${resumeFile}`);
+    errorCount++;
+}
+
 console.log('\n----------------------------------------');
 if (errorCount === 0) {
     console.log('✨ Build verification SUCCESS: 0 errors detected. Production ready.');

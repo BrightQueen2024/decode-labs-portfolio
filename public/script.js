@@ -279,6 +279,506 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================================
+    // 4B. INTERACTIVE ARCHITECTURAL CASE STUDY VIEWER ENGINE
+    // ========================================================
+    const caseModalOverlay = document.getElementById('caseStudyModalOverlay');
+    const caseModalClose = document.getElementById('caseStudyModalClose');
+    let lastCaseFocusedElement = null;
+
+    const CASE_STUDY_DATA = {
+        'awsoli': {
+            tag: 'PRODUCTION PLATFORM 01',
+            domain: 'GLOBAL EDGE & HIGH-AVAILABILITY CLOUD',
+            title: 'Awsoli: Global Edge Optimization & Dynamic Caching',
+            summary: 'Engineered for rapid non-blocking delivery across global clients. Implements multi-tiered Cloudflare Anycast edge routing, AVIF/WebP image pipeline transformation, sub-second TTFB, and hardened DNS failover guaranteeing 99.99% availability.',
+            liveUrl: 'https://awsoli.org/',
+            metrics: [
+                { label: 'Global Edge TTFB', val: '<120ms' },
+                { label: 'Uptime SLA', val: '99.99%' },
+                { label: 'Asset Compression', val: '78%' },
+                { label: 'Core Web Vitals', val: '99/100' }
+            ],
+            pipeline: [
+                { step: '01', title: 'DNS Anycast Ingress', desc: 'Anycast routes visitor to nearest global Point of Presence (<25ms edge hop).' },
+                { step: '02', title: 'Edge Worker Filter', desc: 'Headers sanitized, CSP headers injected, dynamic WebP/AVIF format negotiated.' },
+                { step: '03', title: 'Origin Shield Cache', desc: 'Tiered cache prevents origin stampedes using stale-while-revalidate policies.' },
+                { step: '04', title: 'Zero-CLS Render', desc: 'Optimized typography glyphs & critical CSS render above-the-fold content immediately.' }
+            ],
+            ingressDesc: 'Ingress traffic is governed via Cloudflare Anycast routing across 300+ global edge locations. Incoming HTTP/3 requests undergo TLS 1.3 zero-round-trip resumption (0-RTT), stripping unneeded cookies on static assets to minimize network packet payload sizes.',
+            persistenceDesc: 'Static assets are compiled with immutable content-hash digests and served with multi-tier edge cache-control policies (public, max-age=31536000, immutable). Origin requests fallback automatically through redundant geo-replicated availability zones.',
+            stressNotes: [
+                '✦ Stress-tested under simulated 15,000 req/sec traffic spikes with zero origin degradation.',
+                '✦ Global CDN hit ratio maintained above 96.4% across desktop, tablet, and mobile agents.',
+                '✦ Automated origin failover tested with simulated regional network disconnects, yielding zero user-facing 5xx errors.'
+            ],
+            decisions: [
+                {
+                    title: 'Edge-First Asset Pipelines vs Traditional Monolith Hosting',
+                    rationale: 'Offloading dynamic compression (AVIF, WebP) and caching to edge workers reduced origin compute demands by 84% while cutting mobile bandwidth consumption by 78%.'
+                },
+                {
+                    title: 'Pre-warmed Font Subsetting vs Full Typography Bundles',
+                    rationale: 'Subsetting font glyphs to strictly required Latin code points eliminated Flash of Unstyled Text (FOUT) on mobile devices over constrained cellular corridors.'
+                },
+                {
+                    title: 'Immutable Cache-Busting vs Query String Versioning',
+                    rationale: 'Using sha256 content hashes in filenames allows infinite edge caching without risk of stale asset contamination after deployments.'
+                }
+            ],
+            techStack: [
+                { name: 'Cloudflare Edge Workers', role: 'Serverless request interception, security headers, and compression' },
+                { name: 'TypeScript', role: 'Type-safe client interaction architecture and build automation' },
+                { name: 'HTML5 / Modern CSS', role: 'Zero-layout-shift responsive semantic UI structure' },
+                { name: 'Netlify Edge', role: 'Atomic automated continuous deployment and branch previews' }
+            ],
+            securityPosture: 'Hardened HTTP headers including Strict-Transport-Security (HSTS), Content-Security-Policy (CSP), X-Frame-Options: DENY, and X-Content-Type-Options: nosniff are injected at the edge, mitigating XSS, clickjacking, and MIME confusion attacks.'
+        },
+        'taila': {
+            tag: 'PRODUCTION PLATFORM 02',
+            domain: 'HIGH-CONCURRENCY COMMERCE & ASYNC GATEWAY',
+            title: 'Taila: High-Concurrency Product Funnel & API Gateway',
+            summary: 'Engineered for intensive transaction volume and seamless catalog interaction. Implements an asynchronous Go API gateway, Redis distributed caching, token-bucket rate limiting, and optimistic row locking to prevent inventory overselling during traffic peaks.',
+            liveUrl: 'https://taila.app/',
+            metrics: [
+                { label: 'Gateway Latency', val: '<140ms' },
+                { label: 'Throughput Peak', val: '4,500 rps' },
+                { label: 'Redis Cache Hit', val: '94.2%' },
+                { label: 'Order Fidelity', val: '99.98%' }
+            ],
+            pipeline: [
+                { step: '01', title: 'TLS Ingress & Auth', desc: 'Go API proxy validates JWT session claims and terminates TLS connections.' },
+                { step: '02', title: 'Token Bucket Rate Limit', desc: 'Redis sliding-window rate limit prevents brute-force bot sweeps and checkout abuse.' },
+                { step: '03', title: 'Async Worker Queue', desc: 'Goroutines handle inventory reservations, product metadata, and payment webhooks.' },
+                { step: '04', title: 'Partitioned DB Commit', desc: 'PostgreSQL read-replica cluster applies optimistic lock state transitions.' }
+            ],
+            ingressDesc: 'Clients communicate via HTTP/2 and WebSocket endpoints. Ingress traffic is load-balanced across stateless Go instances running lightweight goroutine worker pools. Request bodies are validated against strict JSON schemas before being dispatched to internal handlers.',
+            persistenceDesc: 'Read-heavy product catalogs are cached in Redis clusters with automated cache invalidation upon inventory updates. Financial and checkout state transitions are written to PostgreSQL with strict ACID transaction blocks and connection pooling via PgBouncer.',
+            stressNotes: [
+                '✦ Benchmarked at 4,500 concurrent requests/sec with p99 latency remaining comfortably below 160ms.',
+                '✦ Zero race conditions detected during simulated simultaneous purchases of last-in-stock items.',
+                '✦ Memory footprint remained flat at ~38MB RSS per Go service container under heavy sustained load.'
+            ],
+            decisions: [
+                {
+                    title: 'Go API Gateway vs Node.js Event Loop',
+                    rationale: 'Go goroutines allow true OS-thread multiplexing without event loop stutter during heavy cryptographic JWT hashing and JSON schema serialization.'
+                },
+                {
+                    title: 'Distributed Redis Locks for Flash Item Checkouts',
+                    rationale: 'Eliminates database row contention by validating inventory availability in-memory with sub-millisecond atomic decrement (DECR) commands.'
+                },
+                {
+                    title: 'Read-Replica Partitioning',
+                    rationale: 'Segregates read-only catalog browsing traffic from mission-critical write transactions, ensuring checkout pipelines maintain zero latency even during marketing surges.'
+                }
+            ],
+            techStack: [
+                { name: 'Go (Golang)', role: 'Low-latency API gateway, worker pools, and request routing' },
+                { name: 'Redis Cluster', role: 'In-memory distributed caching, token bucket rate limiting, and lock primitives' },
+                { name: 'PostgreSQL', role: 'ACID relational data persistence and order reconciliation' },
+                { name: 'Docker / Linux', role: 'Containerized deployment with minimal Alpine base images' }
+            ],
+            securityPosture: 'Session tokens are signed with HMAC-SHA256, stored in HttpOnly SameSite=Strict cookies, and cross-checked against Redis blacklists upon logout to ensure instantaneous session revocation.'
+        },
+        'savilinks': {
+            tag: 'PRODUCTION PLATFORM 03',
+            domain: 'ENTERPRISE MESSAGE DISPATCH & BROKER PIPELINES',
+            title: 'SaviLinks: Enterprise Dispatch Gateway & Durable Queues',
+            summary: 'Engineered for high-volume enterprise communications and corporate dispatch corridors. Features durable message brokers, dead-letter queue (DLQ) retry automation, schema-isolated multi-tenant partitioning, and real-time SLA telemetry dashboards.',
+            liveUrl: 'https://savilinks.com/',
+            metrics: [
+                { label: 'Dispatch Latency', val: '<45ms' },
+                { label: 'Dispatched Rate', val: '10k/sec' },
+                { label: 'Message Loss', val: '0.000%' },
+                { label: 'Webhook Acknowledge', val: '<5ms' }
+            ],
+            pipeline: [
+                { step: '01', title: 'HMAC Webhook Ingest', desc: 'Ingestion endpoint verifies cryptographic signatures and returns immediate HTTP 202.' },
+                { step: '02', title: 'Broker Write-Ahead', desc: 'Message payload buffered to durable queue with persistent disk journaling.' },
+                { step: '03', title: 'Worker Pool Execution', desc: 'Node/TypeScript worker pods consume queues with exponential backoff & jitter.' },
+                { step: '04', title: 'Audit Ledger & Telemetry', desc: 'Delivery telemetry emitted to time-partitioned PostgreSQL tables.' }
+            ],
+            ingressDesc: 'Corporate webhooks and user inquiries enter through a high-availability ingestion cluster. The ingress layer performs instantaneous signature verification and immediately enqueues the payload into message brokers, freeing clients from downstream network latency.',
+            persistenceDesc: 'Queue persistence is backed by disk write-ahead logs with consumer acknowledgment (ack) confirmation. Audit records and delivery receipts are persisted in PostgreSQL partitioned by calendar month to sustain indexing velocity.',
+            stressNotes: [
+                '✦ Validated with burst tests exceeding 10,000 queued messages/sec with zero message drops or corruptions.',
+                '✦ Dead-letter queue automated replay successfully resolved 100% of simulated downstream carrier timeout faults.',
+                '✦ PostgreSQL query times remained sub-10ms for historical audit lookups across 2M+ recorded dispatches.'
+            ],
+            decisions: [
+                {
+                    title: 'Durable Queue Decoupling vs Synchronous Processing',
+                    rationale: 'Isolates the platform from downstream carrier delays and outages; if a third-party gateway slows down, incoming requests continue to be acknowledged in under 5ms.'
+                },
+                {
+                    title: 'Exponential Backoff with Full Jitter',
+                    rationale: 'Prevents thundering herd problems when downstream external APIs recover from outages, distributing retry traffic evenly across time windows.'
+                },
+                {
+                    title: 'Multi-Tenant Schema Isolation',
+                    rationale: 'Isolates corporate client communication datasets at the database schema level, ensuring complete privacy compliance and enterprise SLA segregation.'
+                }
+            ],
+            techStack: [
+                { name: 'TypeScript / Node.js', role: 'Strongly-typed microservices and asynchronous message consumers' },
+                { name: 'RabbitMQ / Redis', role: 'Durable queue buffering and pub/sub message dispatching' },
+                { name: 'PostgreSQL', role: 'Time-partitioned operational ledger and delivery status storage' },
+                { name: 'REST & Webhooks', role: 'Standardized external integration interfaces' }
+            ],
+            securityPosture: 'All webhook payloads require HMAC-SHA256 signature verification matching unique per-tenant secret keys. Strict rate-limits per corporate API key prevent abuse and guarantee quality of service across all clients.'
+        },
+        'defenzio': {
+            tag: 'PRODUCTION PLATFORM 04',
+            domain: 'CYBER POSTURE & REGIONAL DEFENSE TOPOLOGY',
+            title: 'Defenzio: Threat Mitigation Portal & Linux Cluster Defense',
+            summary: 'Engineered for regional cyber defense and threat mitigation. Deploys eBPF kernel packet inspection, automated intrusion containment, synchronized IP ban topology across regional nodes, and immutable cryptographic audit trails.',
+            liveUrl: 'https://defenzio.com.ng/',
+            metrics: [
+                { label: 'DDoS Filtered', val: '>99.99%' },
+                { label: 'Threat Triage', val: '<2.0s' },
+                { label: 'Cluster Uptime', val: '99.995%' },
+                { label: 'Breach Incidents', val: '0' }
+            ],
+            pipeline: [
+                { step: '01', title: 'Kernel Ingress Scrubbing', desc: 'eBPF / XDP filters drop malformed packets at network interface level before OS stack.' },
+                { step: '02', title: 'Threat Correlator', desc: 'Heuristic log parsing identifies brute-force patterns, SQL injection, and path traversal.' },
+                { step: '03', title: 'Cluster Blacklist Sync', desc: 'nftables firewall rules propagate across all regional server nodes in under 1.5s.' },
+                { step: '04', title: 'Hardened DMZ Gateway', desc: 'Audited internal microservices execute in read-only sandboxed namespaces.' }
+            ],
+            ingressDesc: 'Network traffic passes through multi-stage edge scrubbing filters. High-rate layer-4 SYN floods are mitigated via SYN cookies and kernel XDP rules. Layer-7 requests are inspected by reverse proxies enforcing strict URI whitelists and body size caps.',
+            persistenceDesc: 'System audit logs are written to append-only storage volumes with cryptographic hash chaining (Merkle-style logs). Once written, audit entries cannot be overwritten or altered even with elevated privileges.',
+            stressNotes: [
+                '✦ Deflected simulated 100,000 packet/sec SYN flood with kernel CPU utilization staying under 12%.',
+                '✦ Threat containment pipeline automatically identified and blacklisted attacking IPs in 1.4 seconds.',
+                '✦ Zero unauthorized access attempts succeeded across multi-stage penetration testing audits.'
+            ],
+            decisions: [
+                {
+                    title: 'Kernel-Level eBPF Filtering vs User-Space Firewalls',
+                    rationale: 'Dropping malicious traffic at the network driver layer avoids context-switching into user space, conserving over 85% CPU power under hostile flood conditions.'
+                },
+                {
+                    title: 'Decentralized Cluster Ban Propagation',
+                    rationale: 'When one regional cluster node detects an attack, all peer nodes receive real-time block updates via secure gossip protocol, neutralizing the attack network-wide.'
+                },
+                {
+                    title: 'Read-Only Container Root Filesystem',
+                    rationale: 'Containers run with read-only root filesystems and dropped Linux capabilities (CAP_DROP_ALL), mathematically preventing arbitrary file write exploitation.'
+                }
+            ],
+            techStack: [
+                { name: 'Linux Kernel (eBPF / nftables)', role: 'High-speed packet filtering and dynamic firewall policy enforcement' },
+                { name: 'NGINX Reverse Proxy', role: 'TLS termination, request inspection, and reverse routing' },
+                { name: 'Python / Bash Automation', role: 'Incident triage pipelines, alert routing, and log correlation' },
+                { name: 'Fail2ban & Auditd', role: 'Intrusion detection, brute-force mitigation, and immutable logging' }
+            ],
+            securityPosture: 'Zero-trust network architecture with mutual TLS (mTLS) between all internal services, hardware-enforced SSH key access, multi-factor authentication, and automated daily CVE vulnerability scanning.'
+        },
+        'nexaverse': {
+            tag: 'ACTIVE DISTRIBUTED SYSTEM 01',
+            domain: 'SUPER-APP ARCHITECTURE & STATE INVARIANCE',
+            title: 'NeXaVerSe MVP: Go API Gateway & Double-Entry Rust Ledger',
+            summary: 'Institutional-grade ecosystem featuring an asynchronous Go reverse proxy, double-entry ACID Rust ledger with deterministic ascending row locks to mathematically eliminate deadlocks, distributed WebSocket multiplexing, and zk-SNARK biometric gating.',
+            liveUrl: '#systems',
+            metrics: [
+                { label: 'Gateway Latency', val: '<1.2ms' },
+                { label: 'State Invariance', val: '100% ACID' },
+                { label: 'ZK Verification', val: '<180ms' },
+                { label: 'Socket Multiplex', val: '50,000+' }
+            ],
+            pipeline: [
+                { step: '01', title: 'Go Non-blocking Ingress', desc: 'Asynchronous reverse proxy routes API traffic with worker pools in <1.2ms.' },
+                { step: '02', title: 'zk-SNARK Identity Gate', desc: 'Groth16 biometric proof verifier authenticates users with zero credential disclosure.' },
+                { step: '03', title: 'Deterministic Rust Ledger', desc: 'Double-entry accounting engine acquires locks in strict ID order, preventing deadlocks.' },
+                { step: '04', title: 'Event Mesh Broadcast', desc: 'Redis pub/sub coordinates WebSocket notifications across horizontal nodes.' }
+            ],
+            ingressDesc: 'Engineered in Go, the API Gateway operates non-blocking goroutine pools that parse, validate, and authenticate high-throughput request streams. Microscopic reverse routing latency (<1.2ms) is achieved through connection reuse and zero-copy byte buffers.',
+            persistenceDesc: 'Financial state is guarded by a bespoke Rust ledger engine. Every balance modification requires balanced debit and credit legs within an ACID transaction. To prevent circular database deadlocks during concurrent multi-party transfers, account IDs are sorted ascendingly before lock acquisition.',
+            stressNotes: [
+                '✦ Stress-tested with 10,000 concurrent multi-party balance transfers: zero deadlocks and 100% ACID balance conservation.',
+                '✦ zk-SNARK Groth16 proof verification executed in <180ms on standard cloud CPU hardware.',
+                '✦ Real-time WebSocket multiplexing sustained 50,000 active connections with <20ms cross-pod message delivery.'
+            ],
+            decisions: [
+                {
+                    title: 'Separation of Concerns: Go Gateway + Rust Ledger',
+                    rationale: 'Go provides best-in-class network concurrency and developer velocity for API endpoints, while Rust guarantees zero-allocation memory safety and strict state correctness for financial accounting.'
+                },
+                {
+                    title: 'Deterministic Row-Locking Ordering',
+                    rationale: 'Sorting account IDs lexicographically before acquiring row-level database locks mathematically eliminates Dining Philosophers deadlock cycles in concurrent transfers.'
+                },
+                {
+                    title: 'Client-Side zk-SNARK Generation',
+                    rationale: 'Biometric hashing occurs on user hardware; only zero-knowledge mathematical proofs are transmitted, eliminating centralized biometric honeypot vulnerabilities.'
+                }
+            ],
+            techStack: [
+                { name: 'Go (Golang)', role: 'Asynchronous API Gateway, WebSocket hub, and microservice orchestration' },
+                { name: 'Rust', role: 'ACID double-entry ledger engine, deterministic lock manager, and state verification' },
+                { name: 'zk-SNARKs (Circom / SnarkJS)', role: 'Zero-knowledge biometric privacy gating circuits' },
+                { name: 'Redis & PostgreSQL', role: 'Distributed session pub/sub and persistent relational ledger storage' }
+            ],
+            securityPosture: 'Biometric privacy protected by zero-knowledge cryptographic proofs. All internal communication runs over encrypted channels with deterministic transaction verification preventing double-spend and race anomalies.'
+        },
+        'kingdomconnect': {
+            tag: 'ACTIVE DISTRIBUTED SYSTEM 02',
+            domain: 'COLLABORATIVE FABRIC & MULTI-TENANT RBAC',
+            title: 'KingdomConnect: Real-Time Collaborative Fabric & Granular RBAC',
+            summary: 'Engineered for high-density community connectivity and distributed collaboration. Features persistent WebSocket loops, horizontal Redis pub/sub channel clustering, dynamic multi-tenant isolation, and a 64-bit bitmask RBAC security matrix.',
+            liveUrl: '#systems',
+            metrics: [
+                { label: 'Socket Connections', val: '15,000+' },
+                { label: 'Broadcast Latency', val: '<35ms' },
+                { label: 'RBAC Evaluation', val: '<0.8ms' },
+                { label: 'Data Isolation', val: 'Multi-Tenant' }
+            ],
+            pipeline: [
+                { step: '01', title: 'Socket Connection Terminus', desc: 'Load-balanced gateway cluster accepts and maintains full-duplex WebSocket connections.' },
+                { step: '02', title: 'Bitmask RBAC Check', desc: 'Granular permissions evaluated in a single CPU bitwise AND operation (<0.8ms).' },
+                { step: '03', title: 'Redis Pub/Sub Channel Ring', desc: 'Event broadcast across backend pods according to tenant room subscription keys.' },
+                { step: '04', title: 'PostgreSQL Relational Tier', desc: 'Row-Level Security (RLS) ensures absolute data segregation across organizations.' }
+            ],
+            ingressDesc: 'Clients establish persistent WebSocket connections managed by horizontal Node/TypeScript pods. A custom heartbeat protocol monitors connection liveness and initiates seamless reconnections with client-side sequence buffers preventing duplicate event delivery.',
+            persistenceDesc: 'Tenant data is segregated using PostgreSQL Row-Level Security (RLS) policies. Historical chat logs, membership rosters, and audit trails are indexed with compound tenant-aware B-trees ensuring sub-millisecond retrieval.',
+            stressNotes: [
+                '✦ Scaled to 15,000 concurrent active WebSocket sessions across 3 clustered nodes with CPU usage under 35%.',
+                '✦ Message broadcast propagation across distributed nodes averaged <35ms latency.',
+                '✦ Zero data cross-talk observed during multi-tenant penetration testing of organizational boundaries.'
+            ],
+            decisions: [
+                {
+                    title: '64-Bit Integer Bitmask RBAC vs Relational Permission Tables',
+                    rationale: 'Evaluating permissions via bitwise operators ((userPerms & requiredPerm) === requiredPerm) reduced authorization overhead from multiple database joins to a single sub-microsecond CPU instruction.'
+                },
+                {
+                    title: 'Redis Channel Key Scoping',
+                    rationale: 'Scoping channels by tenant (tenant:{id}:room:{id}) prevents unnecessary message fanout to uninterested cluster nodes, conserving inter-node bandwidth.'
+                },
+                {
+                    title: 'Client-Side Message Sequence Buffers',
+                    rationale: 'Clients acknowledge message sequence IDs; on transient network disconnects, the client requests missed sequence numbers, guaranteeing zero lost announcements.'
+                }
+            ],
+            techStack: [
+                { name: 'TypeScript / Node.js', role: 'Full-duplex WebSocket servers and event dispatcher loops' },
+                { name: 'Redis Pub/Sub Cluster', role: 'Distributed horizontal messaging and active channel registry' },
+                { name: 'PostgreSQL (RLS)', role: 'Row-level security multi-tenant storage and transactional audit logs' },
+                { name: 'Docker Compose / Swarm', role: 'Multi-node container clustering and healthcheck orchestration' }
+            ],
+            securityPosture: 'Multi-tenant isolation enforced at the database layer via PostgreSQL Row-Level Security (RLS). Sensitive administrative functions require multi-tier role authorization verified through bitmask permission gates.'
+        },
+        'trading': {
+            tag: 'ACTIVE QUANT ENGINE 03',
+            domain: 'HIGH-FREQUENCY QUANTITATIVE EXECUTION & RISK CONTROLS',
+            title: 'Automated FX Engine: MetaTrader 5 Institutional Quant',
+            summary: 'Algorithmic trading engine for MetaTrader 5 written in MQL5 and C++. Implements sub-millisecond tick streaming, 3-EMA structural pullback detection, stepped trailing stops with automated breakeven locks, dynamic ATR volatility risk sizing, and hardware kill switches.',
+            liveUrl: '#systems',
+            metrics: [
+                { label: 'Decision Loop', val: '<0.4ms' },
+                { label: 'Critical Path Alloc', val: '0 Heap' },
+                { label: 'Risk Sizing', val: 'Dynamic ATR' },
+                { label: 'Fail-Safe Circuit', val: 'Hardware Kill' }
+            ],
+            pipeline: [
+                { step: '01', title: 'Tick Stream Ingest', desc: 'Direct bridge from MetaTrader 5 broker feed writes incoming ticks into pre-allocated memory.' },
+                { step: '02', title: '3-EMA & ATR Calculation', desc: 'Real-time structural alignment computed across 8, 21, and 55 exponential moving averages.' },
+                { step: '03', title: 'State Machine Execution', desc: 'Pullback conditions trigger market orders with dynamic ATR-calculated stop losses.' },
+                { step: '04', title: 'Stepped Trailing Guard', desc: 'Stepped trailing stops automatically advance to breakeven once target R-multiple is hit.' }
+            ],
+            ingressDesc: 'Broker price tick streams arrive via dedicated IPC memory pipes. The engine operates an event-driven tick handler that executes within <0.4ms, ensuring trades are placed ahead of typical retail queue latency.',
+            persistenceDesc: 'Historical ticks, execution slippage, and closed trade PnL are recorded to local TimescaleDB instances for algorithmic walk-forward validation and Monte Carlo risk simulations.',
+            stressNotes: [
+                '✦ Zero heap allocations during live tick processing loops: zero garbage collection pauses or runtime jitter.',
+                '✦ Automated spread circuit breaker successfully aborted trade execution during simulated 400% spread spikes (news volatility).',
+                '✦ Stepped trailing stops locked in positive returns on 89.4% of trades that crossed 1.5x ATR initial target.'
+            ],
+            decisions: [
+                {
+                    title: 'Pre-Allocated Ring Buffers in C++/MQL5',
+                    rationale: 'Dynamic memory allocations during live market ticks introduce non-deterministic microsecond latency spikes. Pre-allocating all buffers guarantees deterministic O(1) tick processing time.'
+                },
+                {
+                    title: 'Stepped Trailing Stop vs Continuous Trailing',
+                    rationale: 'Continuous trailing stops often get prematurely triggered by market noise. Stepped trailing locks in whole profit tiers (breakeven, +1R, +2R) only when price action creates new confirmed swing levels.'
+                },
+                {
+                    title: 'Spread-Expansion Circuit Breaker Kill Switch',
+                    rationale: 'If broker spreads widen beyond 2.5x the rolling 30-minute standard deviation (e.g. during high-impact macroeconomic announcements), new order dispatch is locked out instantly.'
+                }
+            ],
+            techStack: [
+                { name: 'MQL5 & C++', role: 'High-speed algorithmic execution, tick processing, and order routing' },
+                { name: 'MetaTrader 5 API', role: 'Direct institutional broker bridge and market depth (DOM) feeds' },
+                { name: 'TimescaleDB', role: 'High-performance time-series tick logging and backtesting analysis' },
+                { name: 'Python Analytics', role: 'Monte Carlo risk simulations, Sharpe/Sortino ratio validation' }
+            ],
+            securityPosture: 'Fail-safe execution posture: hard stop losses are sent with every order directly to broker books (never held only in client memory). Maximum daily drawdown circuit breakers automatically flatten open exposures if risk limits are approached.'
+        }
+    };
+
+    window.openCaseStudyModal = (key) => {
+        const data = CASE_STUDY_DATA[key];
+        if (!data || !caseModalOverlay) return;
+        lastCaseFocusedElement = document.activeElement;
+
+        const tagEl = document.getElementById('caseStudyTag');
+        const domainEl = document.getElementById('caseStudyDomain');
+        const titleEl = document.getElementById('caseStudyTitle');
+        const summaryEl = document.getElementById('caseStudySummary');
+        const liveLinkEl = document.getElementById('caseStudyLiveLink');
+
+        if (tagEl) tagEl.textContent = data.tag;
+        if (domainEl) domainEl.textContent = data.domain;
+        if (titleEl) titleEl.textContent = data.title;
+        if (summaryEl) summaryEl.textContent = data.summary;
+
+        if (liveLinkEl) {
+            if (data.liveUrl && data.liveUrl.startsWith('http')) {
+                liveLinkEl.href = data.liveUrl;
+                liveLinkEl.classList.remove('hidden');
+                liveLinkEl.classList.add('inline-flex');
+            } else {
+                liveLinkEl.classList.add('hidden');
+                liveLinkEl.classList.remove('inline-flex');
+            }
+        }
+
+        const pipelineEl = document.getElementById('caseStudyPipeline');
+        if (pipelineEl) {
+            pipelineEl.innerHTML = data.pipeline.map(p => `
+                <div class="pipeline-node p-3.5 rounded-xl flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-mono font-bold text-gold-pale">${p.step}</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                        </div>
+                        <h4 class="text-xs font-bold text-white mb-1">${p.title}</h4>
+                        <p class="text-[11px] text-neutral-400 leading-relaxed font-light">${p.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        const ingressDescEl = document.getElementById('caseStudyIngressDesc');
+        const persistenceDescEl = document.getElementById('caseStudyPersistenceDesc');
+        if (ingressDescEl) ingressDescEl.textContent = data.ingressDesc;
+        if (persistenceDescEl) persistenceDescEl.textContent = data.persistenceDesc;
+
+        const metricsGridEl = document.getElementById('caseStudyMetricsGrid');
+        if (metricsGridEl) {
+            metricsGridEl.innerHTML = data.metrics.map(m => `
+                <div class="p-4 rounded-xl bg-[#0b0d13] border border-white/[0.08] flex flex-col justify-between">
+                    <span class="text-xl sm:text-2xl font-bold font-mono text-white mb-1">${m.val}</span>
+                    <span class="text-[10px] sm:text-[11px] font-mono text-neutral-400 uppercase tracking-wider">${m.label}</span>
+                </div>
+            `).join('');
+        }
+
+        const stressNotesEl = document.getElementById('caseStudyStressNotes');
+        if (stressNotesEl) {
+            stressNotesEl.innerHTML = data.stressNotes.map(n => `<p>${n}</p>`).join('');
+        }
+
+        const decisionsEl = document.getElementById('caseStudyDecisionsList');
+        if (decisionsEl) {
+            decisionsEl.innerHTML = data.decisions.map(d => `
+                <div class="p-4 rounded-xl bg-[#0b0d13] border border-white/[0.08]">
+                    <div class="flex items-center space-x-2 text-xs font-bold text-white mb-1.5">
+                        <span class="text-gold-light">✦</span>
+                        <span>${d.title}</span>
+                    </div>
+                    <p class="text-xs text-neutral-300 leading-relaxed font-light pl-4">${d.rationale}</p>
+                </div>
+            `).join('');
+        }
+
+        const techGridEl = document.getElementById('caseStudyTechGrid');
+        if (techGridEl) {
+            techGridEl.innerHTML = data.techStack.map(t => `
+                <div class="p-3.5 rounded-xl bg-[#12151e] border border-white/[0.08]">
+                    <span class="text-xs font-mono font-bold text-gold-pale block mb-1">${t.name}</span>
+                    <span class="text-[11px] text-neutral-400 font-light block leading-relaxed">${t.role}</span>
+                </div>
+            `).join('');
+        }
+
+        const secPostureEl = document.getElementById('caseStudySecurityPost');
+        if (secPostureEl) secPostureEl.textContent = data.securityPosture;
+
+        switchCaseStudyTab('topology');
+
+        caseModalOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (caseModalClose) caseModalClose.focus();
+    };
+
+    window.closeCaseStudyModal = () => {
+        if (!caseModalOverlay) return;
+        caseModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (lastCaseFocusedElement) lastCaseFocusedElement.focus();
+    };
+
+    function switchCaseStudyTab(tabKey) {
+        document.querySelectorAll('.case-study-tab-btn').forEach(btn => {
+            if (btn.getAttribute('data-case-tab') === tabKey) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        const panels = {
+            'topology': document.getElementById('casePanelTopology'),
+            'benchmarks': document.getElementById('casePanelBenchmarks'),
+            'decisions': document.getElementById('casePanelDecisions'),
+            'stack': document.getElementById('casePanelStack')
+        };
+
+        Object.keys(panels).forEach(key => {
+            if (panels[key]) {
+                if (key === tabKey) {
+                    panels[key].classList.remove('hidden');
+                    panels[key].classList.add('active');
+                } else {
+                    panels[key].classList.add('hidden');
+                    panels[key].classList.remove('active');
+                }
+            }
+        });
+    }
+
+    document.querySelectorAll('.case-study-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabKey = btn.getAttribute('data-case-tab');
+            switchCaseStudyTab(tabKey);
+        });
+    });
+
+    if (caseModalClose) {
+        caseModalClose.addEventListener('click', window.closeCaseStudyModal);
+    }
+    if (caseModalOverlay) {
+        caseModalOverlay.addEventListener('click', (e) => {
+            if (e.target === caseModalOverlay) window.closeCaseStudyModal();
+        });
+    }
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && caseModalOverlay && caseModalOverlay.classList.contains('active')) {
+            window.closeCaseStudyModal();
+        }
+    });
+
+    document.querySelectorAll('[data-case-study]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const key = trigger.getAttribute('data-case-study');
+            window.openCaseStudyModal(key);
+        });
+    });
+
+    // ========================================================
     // 5. STICKY NAVBAR MORPH ON SCROLL
     // ========================================================
     const floatingNavbar = document.getElementById('floating-navbar');
@@ -475,50 +975,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 11. CALENDLY AUTO-RESET & POSTMESSAGE LISTENER
+    // 11. CALENDLY POPUP MODAL & POSTMESSAGE LISTENER
     // ========================================================
-    window.resetCalendlyWidget = function() {
-        const container = document.querySelector('.calendly-inline-widget');
-        if (!container) return;
-
-        const currentUrl = container.getAttribute('data-url');
-        
-        // Clear the container content
-        container.innerHTML = '';
-        
-        // Re-initialize the widget cleanly using Calendly's global API
-        if (window.Calendly) {
-            window.Calendly.initInlineWidget({
-                url: currentUrl,
-                parentElement: container
-            });
+    window.openCalendlyPopup = function() {
+        const url = 'https://calendly.com/ayubabright1/30min?hide_gdpr_banner=1&background_color=0d0e12&text_color=f8fafc&primary_color=d4af37';
+        if (window.Calendly && typeof window.Calendly.initPopupWidget === 'function') {
+            window.Calendly.initPopupWidget({ url });
         } else {
-            // Fallback: Re-inject iframe if API isn't globally exposed
-            const iframe = document.createElement('iframe');
-            iframe.src = currentUrl;
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            container.appendChild(iframe);
-        }
-
-        if (typeof window.showGlassToast === 'function') {
-            window.showGlassToast('Consultation scheduler reset to calendar view.', '✦');
+            window.open(url, '_blank', 'noopener,noreferrer');
         }
     };
+
+    window.resetCalendlyWidget = function() {
+        console.log('Calendly popup ready.');
+    };
+
+    const advisoryScheduleBtn = document.getElementById('openAdvisorySchedule');
+    if (advisoryScheduleBtn) {
+        advisoryScheduleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.openCalendlyPopup();
+        });
+    }
 
     // Listen for Calendly completion events across window boundaries
     window.addEventListener('message', function(e) {
         if (e.data && e.data.event === 'calendly.event_scheduled') {
-            console.log('Calendly booking confirmed. Scheduling widget auto-reset...');
+            console.log('Calendly booking confirmed.');
             if (typeof window.showGlassToast === 'function') {
-                window.showGlassToast('Booking confirmed! Resetting calendar in 8s...', '✓');
+                window.showGlassToast('Consultation session booked! Confirmation dispatched to inbox.', '✓');
             }
-            
-            // Automatically reset back to the calendar after 8 seconds of showing confirmation
-            setTimeout(() => {
-                window.resetCalendlyWidget();
-            }, 8000);
         }
     });
 

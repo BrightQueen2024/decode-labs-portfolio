@@ -384,12 +384,39 @@ body {
   box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.3);
 }
 
-/* Calendly Dark Embed Wrapper */
+/* Calendly Dark Embed Wrapper & Executive Masking */
 .calendly-wrapper {
-  background: #0a0b0e;
+  background: #0d0e12;
   border-radius: 1.25rem;
   border: 1px solid rgba(212, 175, 55, 0.18);
   overflow: hidden;
+}
+
+.calendly-mask-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 1.375rem 1.375rem;
+  background: #0d0e12;
+  width: 100%;
+  height: 675px;
+}
+
+.calendly-mask-wrapper .calendly-inline-widget {
+  width: 100% !important;
+  min-width: 320px;
+  height: 715px !important;
+  margin-top: -35px !important;
+}
+
+.calendly-white-label-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, #0d0e12 40%, rgba(13, 14, 18, 0.85) 75%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
 }
 
 /* Monospace Technical Stack Matrix Badges */
@@ -542,4 +569,60 @@ body {
   background: rgba(212, 175, 55, 0.25);
   border-color: var(--gold-primary);
   color: #ffffff;
+}
+
+/* ========================================================
+   5. ARCHITECTURAL CASE STUDY VIEWER MODAL
+   ======================================================== */
+.case-study-tab-btn {
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.case-study-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.case-study-tab-btn.active {
+  color: #ffffff;
+  background: rgba(22, 27, 40, 0.95);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 241, 168, 0.25), 0 0 16px rgba(212, 175, 55, 0.15);
+}
+
+.case-panel {
+  display: none;
+  animation: casePanelFade 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.case-panel.active {
+  display: block;
+}
+
+@keyframes casePanelFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pipeline-node {
+  background: rgba(14, 17, 25, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+
+.pipeline-node:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
