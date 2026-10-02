@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ayuba-garba-portfolio.netlify.app/sitemap.xml
